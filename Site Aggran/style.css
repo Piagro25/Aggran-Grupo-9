@@ -129,12 +129,13 @@ body {
     background-color: #e9f4da;
     border-radius: 10px;
     border-color: #8CC342;
-
+    font-size: medium;
 }
 
 .button_login {
     width: 100px;
     height: 50px;
+    font-size: medium;
     font-family: Anton;
     color: white;
     background-color: #2E7D32;
