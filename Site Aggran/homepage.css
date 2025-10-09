@@ -157,9 +157,9 @@ body {
 
 
 #simulador .simulador_form {
-   display: flex;
+    display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     width: 1500px;
     height: 400px;
     background-color: #FFFAF1;
@@ -218,14 +218,14 @@ body {
 }
 
 .container {
-     padding-top: 100px;
+    padding-top: 100px;
     display: block;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
-    margin-bottom: 40px; 
+    margin-bottom: 40px;
 }
 
 
@@ -242,15 +242,16 @@ body {
 }
 
 .depoimentos_container {
-    margin-top: 70px; 
-    display: flex; 
-    align-items: stretch; 
-    gap: 20px; 
+    margin-top: 70px;
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
     padding: 10px;
-    margin-bottom: 80px; 
+    margin-bottom: 80px;
 }
 
-.depoimentos_container .cliente_a{
+.depoimentos_container .cliente_a {
+    border: 1px solid green;
     background-color: #E9F4DA;
     border-radius: 10px;
     padding: 50px;
@@ -263,13 +264,14 @@ body {
     display: inline-block;
 
     /*Alinha verticalmente com o texto do span */
-    vertical-align: middle; 
-    
+    vertical-align: middle;
+
     /*Remove margem inferior que pode estar empurrando o span */
     margin-bottom: 0;
 }
 
-.depoimentos_container .cliente_b{
+.depoimentos_container .cliente_b {
+    border: 1px solid green;
     background-color: #E9F4DA;
     border-radius: 10px;
     padding: 50px;
@@ -279,11 +281,12 @@ body {
 
 .depoimentos_container .cliente_b h3 {
     display: inline-block;
-    vertical-align: middle; 
-    margin-bottom: 0; 
+    vertical-align: middle;
+    margin-bottom: 0;
 }
 
-.depoimentos_container .cliente_c{
+.depoimentos_container .cliente_c {
+    border: 1px solid green;
     background-color: #E9F4DA;
     border-radius: 10px;
     padding: 50px;
@@ -293,7 +296,7 @@ body {
 
 .depoimentos_container .cliente_c h3 {
     display: inline-block;
-    vertical-align: middle; 
+    vertical-align: middle;
     margin-bottom: 0;
 }
 
