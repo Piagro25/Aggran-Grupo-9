@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* Aqui inicia-se o header */
+
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; 
     list-style: none;
     text-decoration: none;
     margin: 0;
@@ -23,7 +25,7 @@ body {
     border-bottom: 2px solid black;
 }
 
-.header,.header ul{
+.header, .header ul{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,6 +70,10 @@ body {
     margin-right: 50px;
 }
 
+.logo:hover {
+    cursor: pointer;
+}
+
 .header ul li a,.header button a{
     color: black;
 }
@@ -80,70 +86,336 @@ body {
 
 }
 
+/* 
+Aqui inicia-se o homepage 
+e se finaliza o header
+*/
+.content-wrapper {
+    flex-grow: 1;
+    padding-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero_content {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    gap: 40px;
+    /* Adiciona um espaçamento entre a imagem e o texto */
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.main_image {
+    width: 40%;
+    height: auto;
+}
+
+.main_text {
+    width: 60%;
+    text-align: left;
+    text-align: justify;
+}
+
+.main_text h2 {
+    font-family: Anton;
+    margin-bottom: 15px;
+    color: #2E7D32;
+    font-size: 40px;
+    text-align: left;
+}
+
+.main_text p {
+    font-family: montserrat;
+    margin-bottom: 15px;
+    font-size: 16px;
+    text-align: left;
+}
+
+#simulador {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    background-color: #2E7D32;
+    color: white;
+    padding: 50px 10%;
+}
+
+#simulador .simulador_texto h2 {
+    width: 90%;
+    background-color: transparent;
+    font-family: Anton;
+    padding: 0;
+    font-size: 45px;
+    text-align: left;
+    margin-bottom: 20px;
+}
 
 
+#simulador .simulador_texto p {
+    background-color: transparent;
+    font-family: montserrat;
+    padding: 12px 0;
+    width: 85%;
+    font-size: 20px;
+    text-align: left;
+}
 
+
+#simulador .simulador_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1500px;
+    height: 400px;
+    background-color: #FFFAF1;
+    border-radius: 10px;
+    padding: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: black;
+}
+
+
+#simulador .simulador_form input {
+    display: inline-block;
+    padding: 12px;
+    border: 3px solid green;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+
+#simulador .checkbox_group input {
+    display: inline-block;
+    padding: 5px;
+    border: 6px solid green;
+    border-radius: 10px;
+    margin-bottom: 15px;
+
+}
+
+#simulador .simulador_texto label {
+    font-size: 15px;
+}
+
+#simulador .simulador_texto select {
+    font-size: 15px;
+    display: inline-block;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+
+#simulador .simulador_form button {
+    font-family: Anton;
+    font-size: 30px;
+    display: block;
+    width: 100%;
+    padding: 18px;
+    background-color: #2E7D32;
+    color: #FFFAF1;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.container {
+    padding-top: 100px;
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+.container h2 {
+    font-family: Anton;
+    font-size: 50px;
+    color: #2E7D32;
+}
+
+.container p {
+    font-family: montserrat;
+    font-size: 25px;
+    color: black;
+}
+
+.depoimentos_container {
+    margin-top: 70px;
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+    padding: 10px;
+    margin-bottom: 80px;
+}
+
+.depoimentos_container .cliente_a {
+    border: 1px solid green;
+    background-color: #E9F4DA;
+    border-radius: 10px;
+    padding: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: black;
+}
+
+.depoimentos_container .cliente_a h3 {
+    /* Força o H3 a ficar lado a lado */
+    display: inline-block;
+
+    /*Alinha verticalmente com o texto do span */
+    vertical-align: middle;
+
+    /*Remove margem inferior que pode estar empurrando o span */
+    margin-bottom: 0;
+}
+
+.depoimentos_container .cliente_b {
+    border: 1px solid green;
+    background-color: #E9F4DA;
+    border-radius: 10px;
+    padding: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: black;
+}
+
+.depoimentos_container .cliente_b h3 {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0;
+}
+
+.depoimentos_container .cliente_c {
+    border: 1px solid green;
+    background-color: #E9F4DA;
+    border-radius: 10px;
+    padding: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: black;
+}
+
+.depoimentos_container .cliente_c h3 {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0;
+}
+
+/* 
+Aqui inicia-se o login
+e se finaliza o homepage
+*/
 
 
 .container {
+    padding-top: 100px;
     margin: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    margin-bottom: 40px;
+}
+
+.img_login {
+    width: 40vw;
+    max-height: 348px; /* Pra que servem isso?  */
+    max-width: 628px;
+    border-radius: 20px;
 }
 
 .div_corpo_login h1 {
     color: #2E7D32;
-    font-family: Montserrat;
+    font-family: Anton;
+    font-size: 35px;
+    font-weight: 400;
+    
 }
 
-.span_acesso_login {
+.div_corpo_login span {
     font-family: Montserrat;
 }
 
 .div_corpo_login {
     display: flex;
     flex-direction: column;
-}
-
-.container .div_img {
-    width: 30vw;
-} 
-
-.container .div_corpo_login {
     width: 30vw;
 }
 
-
-.img_login {
-    width: 100%;
-    max-height: 348px;
-    max-width: 628px;
-    border-radius: 20px;
+.form_inputs div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    
 }
 
-.div_login input, .div_senha input {
+.form_inputs div p{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start; 
+    flex-direction: column;
+    color:  #006838;
+    font-weight: bold;
+    margin-bottom: -15px;
+    
+}
+
+.form_inputs div span{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end; 
+    justify-self: flex-end;
+    font-style: italic;
+    
+}
+
+.form_inputs div input {
     width: 100%;
     height: 50px;
     font-family: Montserrat;
     background-color: #e9f4da;
     border-radius: 10px;
     border-color: #8CC342;
-    font-size: medium;
+    padding-left: 10px;
+    font-size: 15px;
 }
 
-.button_login {
-    width: 100px;
+/* .div_login input, .div_senha input {
+    width: 100%;
     height: 50px;
-    font-size: medium;
+    font-family: Montserrat;
+    background-color: #e9f4da;
+    border-radius: 10px;
+    border-color: #8CC342;
+    font-size: 14px;
+} */
+
+.button_login {
+    width: 200px;
+    height: 50px;
+    font-size: 14px;
     font-family: Anton;
     color: white;
     background-color: #2E7D32;
+    border: #006838;
     border-radius: 10px;
     justify-self: center;
     align-self: center;
     text-align: center;
+    margin-bottom: 20px;
+    transition: all 0.5s;
     
+}
+
+.button_login:hover {
+    cursor: pointer;
+    scale: 1.1;
 }
 
 .span_primeiroAcesso {
@@ -151,12 +423,141 @@ body {
     font-size: 15px;
     display: block;
     text-align: center;
+    margin-bottom: 15px;
+    font-style: italic;
+    text-decoration: none;
+    color: black;
+}
+
+.div_corpo_login span a:link,
+.div_corpo_login span a:visited,
+.div_corpo_login span a:active {
+    color: black;
+    text-decoration: none;
+}
+
+.div_corpo_login span a:hover {
+    color: #006838;
+
+}
+
+ /* 
+Aqui inicia-se o cadastro 
+e se finaliza o login
+*/
+
+.Conteudo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+    /* flex: 1;              
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 20px; */
+}
+
+.Conteudo h1{
+    color: #2E7D32;
+    font-family: Anton;
+    font-size: 30px;
+    font-weight: 400;
+    color:  #006838;
+    
+    display: flex; 
+    justify-self: flex-start;
+    align-self: center;
+    flex-direction: column;
+    margin: 30px 280px 45px 0  ;
+    
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.config {
+    display: block;
+    width: 500px;
+    flex-direction: row;
+    
+}
+ .config form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 45px;
+ }
+
+.config form div input{
+    width: 240px;
+    height: 50px;
+    font-family: Montserrat;
+    background-color: #E9F4DA;
+    border-radius: 10px;
+    border-color: #8CC342;
+    display: flex;
+    flex-direction: row wrap;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.select_produção{
+    width: 240px;
+    height: 50px;
+    background-color: #E9F4DA;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: #8CC342;
+    display: flex;
+    flex-direction: row wrap;
+    padding-left: 10px;
+    font-size: 15px;
+
+}
+
+.config form div p{
+    display: flex;
+    color:  #006838;
+    font-weight: bold;
+
+}
+
+.button_cadastro {
+    width: 200px;
+    height: 50px;
+    font-size: 14px;
+    font-family: Anton;
+    color: white;
+    background-color: #2E7D32;
+    border: #006838;
+    border-radius: 10px;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    margin-bottom: 40px;
+    transition: all 0.5s;
+    
+}
+
+.button_cadastro:hover {
+    cursor: pointer;
+    scale: 1.1;
 }
 
 
-
-
-
+/* 
+Aqui inicia-se o footer
+e se finaliza o cadastro
+*/
 
 .footer {
     display: flex;
@@ -209,4 +610,33 @@ body {
     align-items: center;
     align-self: flex-start;
 
+}
+
+.agora {
+    font-weight: bolder;
+}
+
+/* .vector {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+} */
+
+.medições {
+    width: 200px;
+    height: 150px;
+    font-family: Anton;
+    color: white;
+    background-color: #2E7D32;
+    border: #006838;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: space-between;
+    align-self: center;
+    text-align: center;
+    margin-bottom: 5px;
+    margin-top: 30px;
+    gap: 10px;
+
+    
 }

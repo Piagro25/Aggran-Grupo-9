@@ -5,39 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="stylesheet" href="style.css">
+    <!-- <script src="main.js"></script> -->
 </head>
 <body>
     <div class="header">
       <div class="logo_wrapper">
-      <img class="logo" width="105px" height="40px" src="./Assets/logo_header.png" alt="">
-      <img class="logo" width="21.27px" height=39px" src="./Assets/folha_header.png" alt=""> 
-    </div> 
-      <ul class="navbar">
-        <li>
-          <a href="">Home</a>
-        </li>
-        <li>
-          <a href="">Tecnologia</a>
-        </li>
-        <li>
-          <a href="">Quem somos</a>
-        </li>
-        <li>
-          <a href="">Fale Conosco</a>
-        </li>
-        <li>
-          <a href="">Primeiro Acesso</a>
-        </li>
-        <li class="agora">
-          <a href="#">Cadastro</a>
-        </li>
-      </ul>
-      <button>
-        <a href="">Área do Cliente</a>
-      </button>
-    </div>
+        <img class="logo" width="105px" height="40px" src="./Assets/logo_header.png" alt="" onclick="imagemVolta()">
+        <img class="logo" width="21.27px" height=39px" src="./Assets/folha_header.png" alt="" onclick="imagemVolta()"> 
+      </div> 
+          <ul class="navbar">
+      <li>
+        <a href="homepage.html">Home</a>
+      </li>
+      <li>
+        <a href="">Tecnologia</a>
+      </li>
+      <li>
+        <a href="">Quem somos</a>
+      </li>
+      <li>
+        <a href="">Fale Conosco</a>
+      </li>
+       <li class="agora">
+         <a href="cadastro.html">Primeiro Acesso</a>
+       </li>
+     </ul>
+     <button>
+       <a href="login.html">Área do Cliente</a>
+     </button>
+   </div>
     
-    
+    <div class="Conteudo">
+      <h1>Primeiro Acesso</h1>
+      <div class="formulario">
+        <div class="config">
+          <form action="">
+            <div>
+              <p>Código de Acesso*</p>
+              <input type="text">
+            </div>
+            <div>
+              <p>Nome de usuário*</p>
+              <input type="text" id="input_user" placeholder="Fernando Brandão">
+            </div>
+            <div>
+              <p>Crie sua senha*</p>
+              <input type="text" placeholder="sptech@1234">
+            </div>
+           <div>
+              <p>Confirme sua senha*</p>
+              <input type="text" id="input_senha" placeholder="sptech@1234">
+            </div>
+            <div>
+              <p>Nome*</p>
+              <input type="text">
+            </div>
+            <div>
+              <p>Email*</p>
+              <input type="text">
+            </div>
+            <div>
+              <p>CNPJ*</p>
+              <input type="text">
+            </div>
+            <div>
+              <p>Telefone*</p>
+              <input type="text">
+            </div>
+            <div>
+              <p>Tipo de produção*</p>
+              <select class="select_produção">
+                <option>Lavoura</option>
+                <option>Pastagem</option>
+                <option>Perene</option>
+              </select>
+            </div>
+            <div>
+              <p>Tamanho do terreno*</p>
+              <input type="text">
+            </div>
+            <div>
+              <p>CEP*</p>
+              <input type="text">
+            </div>
+            <div>
+              <p>Nome da propriedade*</p>
+              <input type="text">
+            </div>
+            <div>
+              <p>Logradouro*</p>
+              <input type="text">
+            </div>
+            <div>
+              <p>Número*</p>
+              <input type="text">
+            </div>
+            <div>
+              <p>UF*</p> <!-- colocar opções -->
+              <input type="text">
+            </div>
+            <div>
+              <p>Complemento/Referência*</p>
+              <input type="text">
+            </div>
+          </form>
+        </div>
+        <button class="button_cadastro" onclick="cadastrar()">ENVIAR</button>
+       </div>
+      </div>
 
     <div class="footer">
         <div class="footer_wrapper">
@@ -76,3 +151,10 @@
     </div>
 </body>
 </html>
+<script>
+
+  function imagemVolta() {
+      window.location.href = "homepage.html"
+    }
+
+</script>

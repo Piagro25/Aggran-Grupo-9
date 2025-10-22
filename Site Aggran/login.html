@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <!-- <script src="main.js"></script> -->
+  </head>
+  <body>
     <div class="header">
       <div class="logo_wrapper">
-      <img class="logo" width="105px" height="40px" src="./Assets/logo_header.png" alt="">
-      <img class="logo" width="21.27px" height=39px" src="./Assets/folha_header.png" alt=""> 
-    </div> 
+        <img class="logo" width="105px" height="40px" src="./Assets/logo_header.png" alt="" onclick="imagemVolta()"/>
+        <img class="logo" width="21.27px" height=39px onclick="imagemVolta()""
+        src="./Assets/folha_header.png" alt="">
+      </div>
       <ul class="navbar">
         <li>
-          <a href="">Home</a>
+          <a href="homepage.html">Home</a>
         </li>
         <li>
           <a href="">Tecnologia</a>
@@ -26,79 +28,110 @@
           <a href="">Fale Conosco</a>
         </li>
         <li>
-          <a href="">Primeiro Acesso</a>
-        </li>
-        <li class="agora">
-          <a href="#">Cadastro</a>
+          <a href="cadastro.html">Primeiro Acesso</a>
         </li>
       </ul>
       <button>
-        <a href="">Área do Cliente</a>
+        <a class="agora" href="login.html">Área do Cliente</a>
       </button>
     </div>
 
     <div class="login">
-        <div class="container">
-            <div class="div_img">
-                <img src="/home/larifq/Área de Trabalho/SPTECH/Semestre 1/Site Aggran/Assets/bela-natureza-retro-com-campo.jpg" class="img_login">
+      <div class="container">
+        <div>
+          <img
+            src="./Assets/bela-natureza-retro-com-campo.jpg"
+            class="img_login"
+          />
+        </div>
+        <div class="div_corpo_login">
+          <h1>Bem-vindo de volta!</h1>
+          <span>Acesse sua dashboard de monitoramento.</span>
+          <br />
+          <br />
+          <br />
+          <form class="form_inputs">
+            <div>
+              <p>Nome de usuário:</p> <br />
+              <input type="text" id="input_user_login" />
             </div>
-            <div class="div_corpo_login">
-                <h1 class="h1_bem-vindo_login">Bem-vindo de volta! </h1>
-                <span class="span_acesso_login">Acesse sua dashboard de monitoramento.</span>
-                <br>
-                <br>
-                <br>
-                <div style="font-size: larger;">
-                <div class="div_login"> Nome de usuário <br>
-                    <input type="text">
-                </div>
 
-                <div class="div_senha">Senha <br>
-                    <input type="password">
-                </div>
-                </div>
-                <br>
-                <button class="button_login">Entrar</button>
-                <br>
-                <span class="span_primeiroAcesso">Primeiro acesso? <a href="/home/larifq/Área de Trabalho/SPTECH/Semestre 1/Site Aggran/cadastro.html">Clique aqui!</a></span>
+            <div>
+              <p>Senha:</p> <br />
+              <input type="password" id="input_senha_login" />
+              <span><a href="">Esqueci minha senha</a></span>
             </div>
+          </form>
+          <br />
+          <button class="button_login" onclick="logar()">ENTRAR</button>
+          <br />
+          <span class="span_primeiroAcesso"
+            >Primeiro acesso? <a href="cadastro.html">Clique aqui!</a></span
+          >
         </div>
-    </div>    
-        
-    <div class="footer">
-        <div class="footer_wrapper">
-          <ul>
-            <li>
-              <a href="">Home</a>
-            </li>
-            <li>
-              <a href="">Tecnologia</a>
-            </li>
-            <li>
-              <a href="">Quem Somos</a>
-            </li>
-            <li>
-              <a href="">Fale Conosco</a>
-            </li>
-            <li>
-              <a href="">Primeiro Acesso</a>
-            </li>
-            <li>
-              <a href="">Área do Cliente</a>
-            </li>
-            <li>
-              <a href="">Política de Privacidade</a>
-            </li>
-            <li>
-              <a href="">Aviso Legal</a>
-            </li>
-          </ul>
-          <div class="footer_logo_wrapper">
-            <img width="32px" height="60px" src="./Assets/folha_footer.png" alt="">
-            <img width="250px" height="90px" src="./Assets/logo_footer.png" alt="">
-          </div>
-        </div>
-        <p> &copy; 2025 AGGRAN. Todos os direitos reservados</p>
+      </div>
     </div>
-</body>
+
+    <div class="footer">
+      <div class="footer_wrapper">
+        <ul>
+          <li>
+            <a href="">Home</a>
+          </li>
+          <li>
+            <a href="">Tecnologia</a>
+          </li>
+          <li>
+            <a href="">Quem Somos</a>
+          </li>
+          <li>
+            <a href="">Fale Conosco</a>
+          </li>
+          <li>
+            <a href="">Primeiro Acesso</a>
+          </li>
+          <li>
+            <a href="">Área do Cliente</a>
+          </li>
+          <li>
+            <a href="">Política de Privacidade</a>
+          </li>
+          <li>
+            <a href="">Aviso Legal</a>
+          </li>
+        </ul>
+        <div class="footer_logo_wrapper">
+          <img
+            width="32px"
+            height="60px"
+            src="./Assets/folha_footer.png"
+            alt=""
+          />
+          <img
+            width="250px"
+            height="90px"
+            src="./Assets/logo_footer.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <p>&copy; 2025 AGGRAN. Todos os direitos reservados</p>
+    </div>
+  </body>
 </html>
+<script>
+
+  function logar() {
+
+  var usuarioCriado = 'Fernando.brandão@gmail.com'
+  var senhaCriada = 'sptech'
+
+  var usuario = (input_user_login.value);
+  var senha = (input_senha_login.value);
+
+
+  if (usuario == usuarioCriado && senha == senhaCriada) {
+    window.location.href = "dashboard.html"
+  }
+}
+</script>
