@@ -16,6 +16,8 @@ CREATE TABLE Cadastro (
 	bairro VARCHAR(40) NOT NULL,
     cidade VARCHAR(40) NOT NULL,
     uf CHAR(2) NOT NULL,
+    tipoProducao VARCHAR(10),
+    CONSTRAINT tipoProducao CHECK(email IN ('Lavoura', 'Pastagem', 'Perene')),
     dataCadastro DATETIME DEFAULT current_timestamp
 );
 
