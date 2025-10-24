@@ -137,13 +137,31 @@ e se finaliza o header
 #simulador {
     display: flex;
     align-items: flex-start;
-    gap: 40px;
+    gap: 10px;
     background-color: #2E7D32;
     color: white;
-    padding: 50px 10%;
+    padding: 5% 5%;
 }
 
-#simulador .simulador_texto h2 {
+.simulador_texto {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 600px;
+    
+}
+
+.inputs div:not(:nth-of-type(5)) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs div p {
+    text-align: center;
+}
+
+.simulador_texto h2 {
     width: 90%;
     background-color: transparent;
     font-family: Anton;
@@ -152,41 +170,99 @@ e se finaliza o header
     text-align: left;
     margin-bottom: 20px;
 }
+.simulador_texto h1 {
+    background-color: transparent;
+    font-family: Anton;
+    padding: 0;
+    font-size: 25px;
+    margin-bottom: 20px;
+    align-self: center;
+    justify-self: center;
+    color:#006838;
+}
 
 
-#simulador .simulador_texto p {
+.simulador_texto p {
     background-color: transparent;
     font-family: montserrat;
     padding: 12px 0;
     width: 85%;
-    font-size: 20px;
+    font-size: 15px;
     text-align: left;
 }
 
+#p_texto {
+    background-color: transparent;
+    font-family: montserrat;
+    padding: 12px 0;
+    width: 85%;
+    font-size: 15px;
+    text-align: left;
+}
 
-#simulador .simulador_form {
+.mensagens #div_mensagem2, .mensagens #div_mensagem3, .mensagens #div_mensagem4 {
+    text-align: center;
+}
+
+
+
+
+.simulador_form {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1500px;
-    height: 400px;
+    height: fit-content;
+    width: 100%;
+    max-width: 650px;
+
     background-color: #FFFAF1;
     border-radius: 10px;
-    padding: 50px;
+    padding: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: black;
+
+}
+
+.checkbox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: #006838;
+    background-color: transparent;
+}
+
+.checkbox i {
+    font-size: 15px;
+    align-self: center;
+}
+
+.checkbox input:checked {
+    accent-color: #006838;
 }
 
 
-#simulador .simulador_form input {
-    display: inline-block;
-    padding: 12px;
-    border: 3px solid green;
+.simulador_form input {
+    height: 50px;
+    font-family: Montserrat;
+    background-color: #e9f4da;
     border-radius: 10px;
-    margin-bottom: 15px;
+    border-color: #8CC342;
+    padding-left: 10px;
     font-size: 15px;
 }
 
+.simulador_form select {
+    width: 200px;
+    height: 50px;
+    background-color: #E9F4DA;
+    border-radius: 10px;
+    border-width: 4px;
+    border-color: #8CC342;
+    flex-direction: row wrap;
+    padding-left: 10px;
+    font-size: 15px;
+}
 
 #simulador .checkbox_group input {
     display: inline-block;
@@ -221,7 +297,7 @@ e se finaliza o header
     color: #FFFAF1;
     border: none;
     border-radius: 10px;
-    margin-bottom: 0;
+    margin-top: 10px;
     cursor: pointer;
 }
 
@@ -306,6 +382,11 @@ e se finaliza o header
     display: inline-block;
     vertical-align: middle;
     margin-bottom: 0;
+}
+
+.aviso {
+    display: none;
+    color: red;
 }
 
 /* 

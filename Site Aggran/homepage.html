@@ -41,8 +41,8 @@
       <img src="./Assets/Cuidar_do_solo.png" style="border-radius: 15px;">
 
       <div class="main_text">
-        <h2>CUIDAR DO SOLO É CUIDAR DO FUTURO <img class="logo" width="21.27px" height="39px"
-            src="./Assets/folha_header.png" alt=""></h2>
+        <h2>CUIDAR DO SOLO É CUIDAR DO FUTURO <a target="_blank" href="https://youtu.be/dQw4w9WgXcQ?si=_T39SVePDrDaFr0D"><img class="logo" width="21.27px" height="39px"
+            src="./Assets/folha_header.png" alt=""></a></h2>
         <p>
           Nosso sensor IoT ajuda pequenos e médios produtores a agir antes que o fogo se espalhe, reduzindo
           riscos
@@ -54,10 +54,11 @@
   </div>
 
   <!-- Simulação -->
+
   <div id="simulador">
     <div class="simulador_texto">
       <h2>DESCUBRA COMO REDUZIR SEUS GASTOS COM PREVENÇÃO INTELIGENTE</h2>
-      <p>
+      <p id="p_texto">
         A calculadora utiliza dados médios de lucros por hectare, custos de recuperação do solo e valores de
         multas previstos em lei para áreas agrícolas e de vegetação nativa. A partir das informações que
         você
@@ -69,75 +70,74 @@
     </div>
 
     <div class="simulador_form">
-      <div class="simulador_texto">
-        <label for="area">Área monitorada (hectares)*</label>
-        <input type="number" id="area" name="area"> <br><br>
+      <div class="simulador_texto" id="simulador_texto">
 
-        <label for="tipo_producao">Tipo de produção*
-          <input type="tipo_producao">
-        </label>
+        <h1>Calcule sua economia utilizando nossa solução</h1>
+        <div class="inputs">
+          <form onsubmit="submitado(event)">
+          <div>
+           <p>Selecione seu tipo de produção:</p>
+           <select id="select_producao" required>
+              <option value="" selected disabled>Selecione...</option>
+              <option>Lavoura</option>
+              <option>Pastagem</option>
+              <option>Perene</option>
+              <option>Pênis</option>
+            </select>
+            <!-- <span id="aviso" class="aviso"> Por favor, selecione seu tipo de produção!</span> -->
+          </div>
 
+          <div>
+            <p>Insira a área total da sua propriedade (em hectares):</p>
+            <input type="number" min="1" id="input_areaTotal" required>
+            <!-- <span id="aviso2" class="aviso">Por favor, insira sua área total de propriedade!</span> -->
+          </div>
 
-        <div class="checkbox_group">
-          <label><input type="checkbox"> Vegetação nativa presente</label><br>
-          <label><input type="checkbox"> Usa tecnologia de prevenção</label><br>
-          <label><input type="checkbox"> Próximo a terra indígena</label>
+          <div>
+            <p>Insira seu custo de investimento médio por safra (por hectare):</p>
+            <input type="number" min="0" id="input_investimento" required>
+            <!-- <span id="aviso3" class="aviso"> Por favor, insira seu custo de investimento!</span> -->
+          </div>
+
+          <div>
+            <p>Insira seu lucro líquido mensal (por hectare):</p>
+            <input type="number" id="input_lucroMensal" required>
+            <!-- <span id="aviso4" class="aviso"> Por favor, insira seu lucro líquido mensal!</span> -->
+          </div>
+
+          <br>
+          
+          <div class="checkbox">
+          <input type="checkbox" id="input_TecPrevent"> <i>Já utiliza técnica de prevenção</i> <br>
+          <input type="checkbox" id="input_VegNativa"> <i>Vegetacão nativa presente</i> <br>
+          <input type="checkbox" id="input_TerraInd"> <i>Proximidade com terras indígenas</i> <br>
+          </div>
+          <br>
+          
         </div>
-
-        <button onclick="">Simular agora</button>
+        
+        <div>
+          <button type="submit" onclick="calcular_economia()" >Calcule sua economia!</button><BR>
+          </div>
+          
+          
+          
+        </form>
       </div>
+
+      <div class="mensagens" id="div_mensagens" style="display: none;">
+        <div id="div_mensagem1"></div>
+        <div id="div_msgTerraIndigena"></div>
+        <div id="div_mensagem2"></div>
+        <div id="div_mensagem3"></div>
+        <div id="div_mensagem4"></div>
+          
+        <button onclick="voltar()">Voltar</button>
+      </div>
+      
     </div>
   </div>
-  <!-- <div id="simulador">
-    <div class="simulador_texto">
-      <h2>DESCUBRA COMO REDUZIR SEUS GASTOS COM PREVENÇÃO INTELIGENTE</h2>
-      <p>
-        A calculadora utiliza dados médios de lucros por hectare, custos de recuperação do solo e valores de
-        multas previstos em lei para áreas agrícolas e de vegetação nativa. A partir das informações que
-        você
-        insere (tipo de produção, área e lucro mensal), simulamos os prejuízos em caso de queimadas e
-        comparamos
-        com o cenário de uso do sensor IoT. Assim, você visualiza o quanto pode economizar, tanto evitando
-        perdas de produção quanto reduzindo riscos de penalidades.
-      </p>
-    </div>
 
-    <div class="simulador_form">
-      <div class="simulador_texto">
-        <div>
-          Selecione seu tipo de produção:<br>
-          <select name="" id="select_producao">
-            <option value="selecione" selected disabled>Selecione...</option>
-            <option>Lavoura</option>
-            <option>Pastagem</option>
-            <option>Perene</option>
-          </select><span id="aviso" style="display:none; color:red;"> Por favor, selecione seu tipo de
-            produção!</span><br><br>
-          Insira a área total da sua propriedade (em hectares):<br>
-          <input type="number" min="1" id="input_areaTotal"><span id="aviso2" style="display:none; color:red;">
-            Por favor, insira sua área total de propriedade!</span><br><br>
-          Insira seu custo de investimento médio por safra (por hectare):<br>
-          <input type="number" min="0" id="input_investimento"><span id="aviso3" style="display:none; color:red;"> Por
-            favor, insira seu custo de investimento!</span><br><br>
-          Insira seu lucro líquido mensal (por hectare):<br>
-          <input type="number" name="" id="input_lucroMensal"><span id="aviso4" style="display:none; color:red;"> Por
-            favor, insira seu lucro líquido mensal!</span><br><br>
-          <input type="checkbox" name="" id="input_TecPrevent"> <i>Já utiliza técnica de prevenção</i><br>
-          <input type="checkbox" name="" id="input_VegNativa"> <i>Vegetacão nativa presente</i><br>
-          <input type="checkbox" name="" id="input_TerraInd"> <i>Proximidade com terras indígenas</i><br><br>
-        </div>
-        <div>
-          <button onclick="calcular_economia()">Simular!</button><BR>
-        </div>
-        <div id="div_mensagem1"></div>
-
-      </div>
-      <div id="div_msgTerraIndigena"></div>
-      <div id="div_mensagem2"></div>
-      <div id="div_mensagem3"></div>
-      <div id="div_mensagem4"></div>
-    </div>
-  </div> -->
 
   <!-- Depoimentos -->
 
@@ -229,6 +229,18 @@
 </html>
 
 <script>
+
+  function voltar() {
+    simulador_texto.style.display = "flex";
+    div_mensagens.style.display = "none";
+
+  }
+
+  function submitado(event) {
+    event.preventDefault()
+    console.log(event)
+  }
+
   //Código HTML e JS desenvolvidos por Aurora Carvalho.
   //Variáveis Globais
 
@@ -265,40 +277,47 @@
 
   function calcular_economia() {
 
+    
 
     //Validação de entradas: o preenchimento de todos os campos é obrigatório, senão uma mensagem de erro é exibida e o programa retorna ao início.
     var erro = false
 
-    if (select_producao.value === "selecione") {
-      aviso.style.display = "inline"
+    if (select_producao.value === "") {
+      // aviso.style.display = "inline"
       erro = true
     } else {
-      aviso.style.display = "none"
+      // aviso.style.display = "none"
     }
 
     if (input_areaTotal.value === "") {
-      aviso2.style.display = "inline"
+      // aviso2.style.display = "inline"
       erro = true
     } else {
-      aviso2.style.display = "none"
+      // aviso2.style.display = "none"
     }
     if (input_investimento.value === "") {
-      aviso3.style.display = "inline"
+      // aviso3.style.display = "inline"
       erro = true
     } else {
-      aviso3.style.display = "none"
+      // aviso3.style.display = "none"
     }
 
     if (input_lucroMensal.value === "") {
-      aviso4.style.display = "inline"
+      // aviso4.style.display = "inline"
       erro = true;
     } else {
-      aviso4.style.display = "none"
+      // aviso4.style.display = "none"
+    }
+
+    if (!erro) {
+      simulador_texto.style.display = "none";
+      div_mensagens.style.display = "block";
     }
 
     if (erro) {
       return
     }
+    
 
 
     var tipoProd = select_producao.value.toLowerCase()
@@ -387,13 +406,13 @@
     economiaTotalPos = prejuizoEsperadoSSensorPos - prejuizoEsperadoCSensorPos
 
 
-    div_mensagem1.innerHTML = `Se a sua área de ${areaTotal} hectares for atingida por um incêndio no meio da safra, o prejuízo esperado (considerando multas e custos de recuperação do solo) chega a ${prejuizoEsperadoSSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} baseado numa probabilidade de incêndio em ${probIncendioAjustada * 100}%** da área.<br>
-        Nossa solução garante redução de 50%* do valor do prejuízo esperado, então com o nosso sensor IoT para monitoramento da umidade do solo, esse valor cai para ${prejuizoEsperadoCSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}.<br>
+    div_mensagem1.innerHTML = `Se a sua área de ${areaTotal} hectares for atingida por um incêndio no meio da safra, o prejuízo esperado (considerando multas e custos de recuperação do solo) chega a ${prejuizoEsperadoSSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} baseado numa probabilidade de incêndio em ${probIncendioAjustada * 100}%** da área.<br> <br>
+        Nossa solução garante redução de 50%* do valor do prejuízo esperado, então com o nosso sensor IoT para monitoramento da umidade do solo, esse valor cai para ${prejuizoEsperadoCSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}.<br> <br>
         
-        Caso sua área de ${areaTotal} hectares for atingida por um incêndio depois da safra, o prejuízo esperado (considerando multas e custos de recuperação do solo) chega a ${prejuizoEsperadoSSensorPos.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} baseado numa probabilidade de incêndio em ${probIncendioAjustada * 100}%** da área.<br>
-        Nesse caso, com nossa solução, esse valor cai para ${prejuizoEsperadoCSensorPos.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}!<br>
+        Caso sua área de ${areaTotal} hectares for atingida por um incêndio depois da safra, o prejuízo esperado (considerando multas e custos de recuperação do solo) chega a ${prejuizoEsperadoSSensorPos.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} baseado numa probabilidade de incêndio em ${probIncendioAjustada * 100}%** da área.<br> <br>
+        Nesse caso, com nossa solução, esse valor cai para ${prejuizoEsperadoCSensorPos.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}!<br> <br>
 
-        Sem prevenção, o fogo consome sua produção e seu bolso. Com prevenção, você transforma um risco catastrófico em um impacto controlável.<br>
+        Sem prevenção, o fogo consome sua produção e seu bolso. Com prevenção, você transforma um risco catastrófico em um impacto controlável.<br> <br>
         `
     div_mensagem2.innerHTML = `<h6>*Cálculos utilizam valores conservadores baseados em literatura técnica.</h6>`
     div_mensagem3.innerHTML = `<h6>**A calculadora não contempla casos de incêndio em 100% da área do produtor.</h6>`
@@ -401,7 +420,7 @@
 
 
     if (TerraInd) {
-      div_msgTerraIndigena.innerHTML = "<i>Em áreas com presença de terras indígenas, as penalidades podem ser significativamente maiores que as estimadas pela calculadora, incluindo custos legais adicionais não contemplados neste modelo.</i>"
+      div_msgTerraIndigena.innerHTML = "<i>Em áreas com presença de terras indígenas, as penalidades podem ser significativamente maiores que as estimadas pela calculadora, incluindo custos legais adicionais não contemplados neste modelo.</i> <br> <br>"
 
     }
 
