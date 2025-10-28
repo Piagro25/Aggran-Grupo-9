@@ -126,9 +126,12 @@
 
       <div class="mensagens" id="div_mensagens" style="display: none;">
         <div id="div_mensagem1"></div>
-        <div id="div_msgTerraIndigena"></div>
+          <br>
         <div id="div_mensagem2"></div>
+          <br>
         <div id="div_mensagem3"></div>
+          <br>
+        <div id="div_msgTerraIndigena"></div>
         <div id="div_mensagem4"></div>
           
         <button onclick="voltar()">Voltar</button>
@@ -237,7 +240,6 @@
 
   function submitado(event) {
     event.preventDefault()
-    console.log(event)
   }
 
   //Código HTML e JS desenvolvidos por Aurora Carvalho.
@@ -405,17 +407,15 @@
     economiaTotalPos = prejuizoEsperadoSSensorPos - prejuizoEsperadoCSensorPos
 
 
-    div_mensagem1.innerHTML = `Se a sua área de ${areaTotal} hectares for atingida por um incêndio no meio da safra, o prejuízo esperado (considerando multas e custos de recuperação do solo) chega a ${prejuizoEsperadoSSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} baseado numa probabilidade de incêndio em ${probIncendioAjustada * 100}%** da área.<br> <br>
-        Nossa solução garante redução de 50%* do valor do prejuízo esperado, então com o nosso sensor IoT para monitoramento da umidade do solo, esse valor cai para ${prejuizoEsperadoCSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}.<br> <br>
-        
-        Caso sua área de ${areaTotal} hectares for atingida por um incêndio depois da safra, o prejuízo esperado (considerando multas e custos de recuperação do solo) chega a ${prejuizoEsperadoSSensorPos.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} baseado numa probabilidade de incêndio em ${probIncendioAjustada * 100}%** da área.<br> <br>
-        Nesse caso, com nossa solução, esse valor cai para ${prejuizoEsperadoCSensorPos.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}!<br> <br>
-
-        Sem prevenção, o fogo consome sua produção e seu bolso. Com prevenção, você transforma um risco catastrófico em um impacto controlável.<br> <br>
+    div_mensagem1.innerHTML = `Se a sua área de <b>${areaTotal} hectares</b> for atingida por um incêndio no meio da safra, o prejuízo esperado (considerando multas e custos de recuperação do solo) chega a <b>${prejuizoEsperadoSSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</b> baseado numa probabilidade de incêndio em <b>${probIncendioAjustada * 100}</b>%** da área.<br>
+        Nossa solução garante redução de 50%* do valor do prejuízo esperado, então com o nosso sensor IoT para monitoramento da umidade do solo, esse valor cai para <b>${prejuizoEsperadoCSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</b>.<br>
         `
-    div_mensagem2.innerHTML = `<h6>*Cálculos utilizam valores conservadores baseados em literatura técnica.</h6>`
-    div_mensagem3.innerHTML = `<h6>**A calculadora não contempla casos de incêndio em 100% da área do produtor.</h6>`
-    div_mensagem4.innerHTML = `<h6>***Em caso do produtor inserir um lucro negativo (prejuízo), o valor do lucro será considerado 0 para não indicar economia em caso de incêndio.</h6>`
+    div_mensagem2.innerHTML = `Caso sua área de <b>${areaTotal}</b> hectares for atingida por um incêndio depois da safra, o prejuízo esperado (considerando multas e custos de recuperação do solo) chega a <b>${prejuizoEsperadoSSensorPos.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</b> baseado numa probabilidade de incêndio em <b>${probIncendioAjustada * 100}</b>%** da área.<br> `
+    div_mensagem3.innerHTML = `Sem prevenção, o fogo consome sua produção e seu bolso. Com prevenção, você transforma um risco catastrófico em um impacto controlável.<br> `
+    div_mensagem4.innerHTML = `
+    <h6>*Cálculos utilizam valores conservadores baseados em literatura técnica.</h6>
+    <h6>**A calculadora não contempla casos de incêndio em 100% da área do produtor.</h6> 
+    <h6>***Em caso do produtor inserir um lucro negativo (prejuízo), o valor do lucro será considerado 0 para não indicar economia em caso de incêndio.</h6>`
 
 
     if (TerraInd) {
