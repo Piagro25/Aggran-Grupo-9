@@ -125,13 +125,17 @@
       </div>
 
       <div class="mensagens" id="div_mensagens" style="display: none;">
+        <span class="titulo_mensagem">Meio safra</span>
         <div id="div_mensagem1"></div>
           <br>
+        <span class="titulo_mensagem">Pós safra</span>
         <div id="div_mensagem2"></div>
           <br>
+        <span class="titulo_mensagem">Resultados</span>
         <div id="div_mensagem3"></div>
           <br>
-        <div id="div_msgTerraIndigena"></div>
+        <div id="div_msgTerraIndigena" class="indio"></div> 
+          <br>
         <div id="div_mensagem4"></div>
           
         <button onclick="voltar()">Voltar</button>
@@ -337,10 +341,10 @@
 
     // Definição de probabilidade de incendio de acordo com o tam do produtor
     if (areaTotal <= 200) {
-      var probIncendioBase = 0.15
+      var probIncendioBase = 15
 
     } else {
-      probIncendioBase = 0.2
+      probIncendioBase = 20
     }
 
     // Se usar tecnicas de prevenção, o risco reduz em 30%
@@ -407,11 +411,15 @@
     economiaTotalPos = prejuizoEsperadoSSensorPos - prejuizoEsperadoCSensorPos
 
 
-    div_mensagem1.innerHTML = `Se a sua área de <b>${areaTotal} hectares</b> for atingida por um incêndio no meio da safra, o prejuízo esperado (considerando multas e custos de recuperação do solo) chega a <b>${prejuizoEsperadoSSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</b> baseado numa probabilidade de incêndio em <b>${probIncendioAjustada * 100}</b>%** da área.<br>
-        Nossa solução garante redução de 50%* do valor do prejuízo esperado, então com o nosso sensor IoT para monitoramento da umidade do solo, esse valor cai para <b>${prejuizoEsperadoCSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</b>.<br>
+    div_mensagem1.innerHTML = `Com uma área de <b>${areaTotal} hectares</b> e baseando-se a uma probabilidade de incêndio de <b>${probIncendioAjustada.toFixed(2)}%*</b> o prejuizo esperado em caso de incêndio em <b>meio a safra</b> ao considerar multas e custos de recuperação do solo chegam a <b>${prejuizoEsperadoSSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}.</b>
+        
         `
-    div_mensagem2.innerHTML = `Caso sua área de <b>${areaTotal}</b> hectares for atingida por um incêndio depois da safra, o prejuízo esperado (considerando multas e custos de recuperação do solo) chega a <b>${prejuizoEsperadoSSensorPos.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</b> baseado numa probabilidade de incêndio em <b>${probIncendioAjustada * 100}</b>%** da área.<br> `
-    div_mensagem3.innerHTML = `Sem prevenção, o fogo consome sua produção e seu bolso. Com prevenção, você transforma um risco catastrófico em um impacto controlável.<br> `
+    div_mensagem2.innerHTML = //`Caso sua área de <b>${areaTotal} hectares</b> for atingida por um incêndio depois da safra, o prejuízo esperado (considerando multas e custos de recuperação do solo) chega a <b>${prejuizoEsperadoSSensorPos.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</b> baseado numa probabilidade de incêndio em <b>${probIncendioAjustada * 100}</b>%** da área.<br> 
+    
+    `
+    Em casos de incêndio <b>pós safra</b>, o prejuízo esperado chega a <b>${prejuizoEsperadoSSensorPos.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}.</b>
+    `
+    div_mensagem3.innerHTML = `Nossa solução garante redução de <b>50%*</b> do valor do prejuízo esperado, então com o nosso sensor IoT para monitoramento da umidade do solo, esse valor cai para cerca de <b>${prejuizoEsperadoCSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}.</b> <br>`
     div_mensagem4.innerHTML = `
     <h6>*Cálculos utilizam valores conservadores baseados em literatura técnica.</h6>
     <h6>**A calculadora não contempla casos de incêndio em 100% da área do produtor.</h6> 
