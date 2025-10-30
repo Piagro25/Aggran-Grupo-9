@@ -10,8 +10,22 @@
   <body>
     <div class="header">
       <div class="logo_wrapper">
-        <img class="logo" width="105px" height="40px" src="./Assets/logo_header.png" alt="" onclick="imagemVolta()"/>
-        <img class="logo" width="21.27px" height=39px onclick="imagemVolta() "src="./Assets/folha_header.png" alt="">
+        <img
+          class="logo"
+          width="105px"
+          height="40px"
+          src="./Assets/logo_header.png"
+          alt=""
+          onclick="imagemVolta()"
+        />
+        <img
+          class="logo"
+          width="21.27px"
+          height="39px"
+          onclick="imagemVolta() "
+          src="./Assets/folha_header.png"
+          alt=""
+        />
       </div>
       <ul class="navbar">
         <li>
@@ -51,20 +65,23 @@
           <br />
           <form class="form_inputs">
             <div>
-              <p>Nome de usuário:</p> <br />
+              <p>Nome de usuário:</p>
+              <br />
               <input type="text" id="input_user_login" />
             </div>
-
             <div>
-              <p>Senha:</p> <br />
+              <p>Senha:</p>
+              <br />
               <input type="password" id="input_senha_login" />
-              <span><a href="">Esqueci minha senha</a></span>
+              <span><a onclick="esqueci()" class="a_senha">Esqueci minha senha</a></span>
             </div>
           </form>
           <br />
           <button class="button_login" onclick="logar()">ENTRAR</button>
           <br />
-          <span class="span_primeiroAcesso" >Primeiro acesso? <a href="cadastro.html">Clique aqui!</a></span>
+          <span class="span_primeiroAcesso"
+            >Primeiro acesso? <a href="cadastro.html">Clique aqui!</a></span
+          >
         </div>
       </div>
     </div>
@@ -73,7 +90,7 @@
       <div class="footer_wrapper">
         <ul>
           <li>
-            <a href="">Home</a>
+            <a href="homepage.html">Home</a>
           </li>
           <li>
             <a href="">Tecnologia</a>
@@ -85,10 +102,10 @@
             <a href="">Fale Conosco</a>
           </li>
           <li>
-            <a href="">Primeiro Acesso</a>
+            <a href="cadastro.html">Primeiro Acesso</a>
           </li>
           <li>
-            <a href="">Área do Cliente</a>
+            <a href="login.html">Área do Cliente</a>
           </li>
           <li>
             <a href="">Política de Privacidade</a>
@@ -118,17 +135,28 @@
 </html>
 <script>
 
-  function logar() {
+  var usuarioCriado = "Fernando.brandão@gmail.com"; // 'Fernando.brandão@gmail.com'
+  var senhaCriada = "sptech"; //'sptech'
 
-  var usuarioCriado = 'a'// 'Fernando.brandão@gmail.com'
-  var senhaCriada = 'a' //'sptech'
+  function esqueci() {
 
-  var usuario = (input_user_login.value);
-  var senha = (input_senha_login.value);
+    alert(`A sua senha é: ${senhaCriada}`)
 
-
-  if (usuario == usuarioCriado && senha == senhaCriada) {
-    window.location.href = "dashboard.html"
   }
-}
+
+  function logar() {
+    
+
+    var usuario = input_user_login.value;
+    var senha = input_senha_login.value;
+
+    if (usuario == usuarioCriado && senha == senhaCriada) {
+      window.location.href = "dashboard.html";
+    } else if (usuario == usuarioCriado) {
+      alert(`Senha Incorreta`)
+    } else {
+      alert(`Usuário não encontrado`)
+    }
+  }
+
 </script>

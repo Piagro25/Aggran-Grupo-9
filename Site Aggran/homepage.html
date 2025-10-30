@@ -44,9 +44,11 @@
         <h2>CUIDAR DO SOLO É CUIDAR DO FUTURO <a target="_blank" href="https://youtu.be/dQw4w9WgXcQ?si=_T39SVePDrDaFr0D"><img class="logo" width="21.27px" height="39px"
             src="./Assets/folha_header.png" alt=""></a></h2>
         <p>
-          Nosso sensor IoT ajuda pequenos e médios produtores a agir antes que o fogo se espalhe, reduzindo
+          <!-- Nosso sensor IoT ajuda pequenos e médios produtores a agir antes que o fogo se espalhe, reduzindo
           riscos
-          de queimadas, evitando multas e preservando a produtividade da terra.
+          de queimadas, evitando multas e preservando a produtividade da terra. -->
+
+          Com nosso sensor IoT, ajudamos a sua produção a se manter segura, gerando dashboards de visualização para que ações sejam tomadas antes que o fogo se espalhe, reduzindo os riscos de queimadas, evitando multas e preservando a qualidade de seu solo.
         </p>
 
       </div>
@@ -134,10 +136,10 @@
         <span class="titulo_mensagem">Resultados</span>
         <div id="div_mensagem3"></div>
           <br>
-        <div id="div_msgTerraIndigena" class="indio"></div> 
+        <div id="div_msgTerraIndigena" class="indio" style="display: none;"></div> 
           <br>
         <div id="div_mensagem4"></div>
-          
+
         <button onclick="voltar()">Voltar</button>
       </div>
       
@@ -165,7 +167,6 @@
           na
           produção.”
         </p>
-
       </div>
 
       <div class="cliente_b">
@@ -179,7 +180,6 @@
           mostraram claramente os custos de recuperação e das multas. Hoje enxergo o investimento como
           essencial.”
         </p>
-
       </div>
 
       <div class="cliente_c">
@@ -202,40 +202,50 @@
 
 
   <div class="footer">
-    <div class="footer_wrapper">
-      <ul>
-        <li>
-          <a href="">Home</a>
-        </li>
-        <li>
-          <a href="">Tecnologia</a>
-        </li>
-        <li>
-          <a href="">Quem Somos</a>
-        </li>
-        <li>
-          <a href="">Fale Conosco</a>
-        </li>
-        <li>
-          <a href="">Primeiro Acesso</a>
-        </li>
-        <li>
-          <a href="">Área do Cliente</a>
-        </li>
-        <li>
-          <a href="">Política de Privacidade</a>
-        </li>
-        <li>
-          <a href="">Aviso Legal</a>
-        </li>
-      </ul>
-      <div class="footer_logo_wrapper">
-        <img width="32px" height="60px" src="./Assets/folha_footer.png" alt="">
-        <img width="250px" height="90px" src="./Assets/logo_footer.png" alt="">
+      <div class="footer_wrapper">
+        <ul>
+          <li>
+            <a href="homepage.html">Home</a>
+          </li>
+          <li>
+            <a href="">Tecnologia</a>
+          </li>
+          <li>
+            <a href="">Quem Somos</a>
+          </li>
+          <li>
+            <a href="">Fale Conosco</a>
+          </li>
+          <li>
+            <a href="cadastro.html">Primeiro Acesso</a>
+          </li>
+          <li>
+            <a href="login.html">Área do Cliente</a>
+          </li>
+          <li>
+            <a href="">Política de Privacidade</a>
+          </li>
+          <li>
+            <a href="">Aviso Legal</a>
+          </li>
+        </ul>
+        <div class="footer_logo_wrapper">
+          <img
+            width="32px"
+            height="60px"
+            src="./Assets/folha_footer.png"
+            alt=""
+          />
+          <img
+            width="250px"
+            height="90px"
+            src="./Assets/logo_footer.png"
+            alt=""
+          />
+        </div>
       </div>
+      <p>&copy; 2025 AGGRAN. Todos os direitos reservados</p>
     </div>
-    <p> &copy; 2025 AGGRAN. Todos os direitos reservados</p>
-  </div>
 </body>
 
 </html>
@@ -253,6 +263,7 @@
   }
 
   //Código HTML e JS desenvolvidos por Aurora Carvalho.
+  //Código aprimorado e revisado por Grupo 9 - Aggran.
   //Variáveis Globais
 
   //Valores das multas
@@ -433,8 +444,10 @@
 
 
     if (TerraInd) {
+      div_msgTerraIndigena.style.display = "flex"
       div_msgTerraIndigena.innerHTML = "<i>Em áreas com presença de terras indígenas, as penalidades podem ser significativamente maiores que as estimadas pela calculadora, incluindo custos legais adicionais não contemplados neste modelo.</i> <br> <br>"
-
+    } else {
+      div_msgTerraIndigena.style.display = "none"
     }
 
 
@@ -443,4 +456,5 @@
 function imagemVolta() {
       window.location.href = "homepage.html"
     }
+
 </script>

@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DashBoard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="style.css">
-
-</head>
-<style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <style>
     canvas {
-        width: 50% !important;
-        height: 400px !important;
-        margin-bottom: 30px;
+      width: 50% !important;
+      height: 400px !important;
+      margin-bottom: 30px;
     }
-</style>
+  </style>
 
-<body>
+  <body>
 
     <div class="header">
         <div class="logo_wrapper">
@@ -46,29 +44,43 @@
         </button>
     </div>
 
+    <div id="dash">
     <div class="ola">
         <div>Olá, Fernando Brandão.</div>
     </div>
-    <div class="kpis">
+    <div class="kpis" id="div_kpis">
         <div class="kpi">
-            <div>Média de umidade de hectares:<br><br><strong>46,1%</strong></div>
+            <div>Média de umidade dos sensores:<p>42,8%</p></div>
         </div>
         <div class="kpi">
-            <div>Quantidade de hectares abaixo do ideal:<br><br><strong>1</strong></div>
+            <div>Quantidade de sensores abaixo do ideal:<p>3</p></div>
         </div>
         <div class="kpi">
-            <div>Risco de queimada:<br><br><strong style="color: rgb(101, 233, 91);">Baixo </strong><strong>(16.6%)</strong></div>
+            <div>Risco de queimada:<p style="color: rgb(226, 233, 91);">Média ( 21.4% ) </p></div>
         </div>
         <div class="kpi">
-            <div>Variação de umidade média <br> (24 horas):<br><strong style="color: rgb(240, 52, 52);">-3.5%</strong></div>
+            <div>Variação de umidade média (24 horas):<p style="color: rgb(255, 0, 0);">-3.5%</p></div>
         </div>
     </div>
 
     <div class="sessão_dash">
-        <div class="container_dash">
-            <canvas id="graficoAcima"></canvas>
-            <canvas id="graficoAbaixo"></canvas>
+        <div class="botoes_dash">
+            <button onclick="geral()">Visão geral dos hectares</button>
+          
+            <button onclick="sensor()">Visão do hectar 1</button>
         </div>
+    </div>
+
+        <div class="container_dash" id="grafico_geral">
+            <canvas id="graficoAcimaGeral"></canvas>
+            <canvas id="graficoAbaixoGeral"></canvas>
+        </div>
+
+        <div class="container_dash" id="grafico_sensor" style="display: none;">
+            <canvas id="graficoAcimaSensor"></canvas>
+            <canvas id="graficoAbaixoSensor"></canvas>
+        </div>
+    </div>
     </div>
 
 
@@ -109,48 +121,146 @@
     </div>
 </body>
 
-<script>
-    const sensores = [];
-    const limite = 20;
-
-    let acima = [];
-    let abaixo = [];
+  <script>
 
     // Grafico 1: Sensores Acima de 20%
-    new Chart(document.getElementById("graficoAcima"), {
-        type: "bar",
-        data: {
-            labels: ['Hectar 1', 'Hectar 3', 'Hectar 4', 'Hectar 5', 'Hectar 6', 'Hectar 7'],
-            datasets: [{
-                label: "Umidade dos Hectares Acima de 20%",
-                data: [70, 49, 32, 45, 53, 63, 65],
-                backgroundColor: "rgba(90, 174, 17, 0.655)",
-                borderColor: "rgba(90, 174, 17, 0.655)",
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: { y: { beginAtZero: true, max: 100 } }
-        }
+    
+    new Chart(document.getElementById("graficoAcimaGeral"), {
+      type: "bar",
+      data: {
+        labels: [
+          "Hectar 1",
+          "Hectar 3",
+          "Hectar 4",
+          "Hectar 5",
+          "Hectar 6",
+          "Hectar 7",
+          "Hectar 9",
+          "Hectar 10",
+          "Hectar 11",
+          "Hectar 12",
+          "Hectar 13",
+        ],
+        datasets: [
+          {
+            label: "Umidade dos Hectares Acima de 20%",
+            data: [70, 49, 32, 45, 53, 63, 49, 42, 62, 39, 65],
+            backgroundColor: "rgba(90, 174, 17, 0.655)",
+            borderColor: "rgba(90, 174, 17, 0.655)",
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: { y: { beginAtZero: true, max: 100 } },
+      },
     });
 
     // Gráfico 2: Sensores Abaixo de 20%
-    new Chart(document.getElementById("graficoAbaixo"), {
-        type: "bar",
-        data: {
-            labels: ['Hectar 2', 'Hectar 8'],
-            datasets: [{
-                label: "Umidade dos Hectares Abaixo de 20%",
-                data: [18, 14],
-                backgroundColor: "rgba(188, 10, 10, 0.943)",
-                borderColor: "rgba(188, 10, 10, 0.943)",
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: { y: { beginAtZero: true, max: 100 }}
-        }
+    new Chart(document.getElementById("graficoAbaixoGeral"), {
+      type: "bar",
+      data: {
+        labels: ["Hectar 2", "Hectar 8", "Hectar 14"],
+        datasets: [
+          {
+            label: "Umidade dos Hectares Abaixo de 20%",
+            data: [18, 14, 10],
+            backgroundColor: "rgba(188, 10, 10, 0.943)",
+            borderColor: "rgba(188, 10, 10, 0.943)",
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: { y: { beginAtZero: true, max: 100 } },
+      },
     });
-</script>
 
+    //
+
+    // Grafico 1: Sensores Acima de 20%
+    
+    new Chart(document.getElementById("graficoAcimaSensor"), {
+      type: "bar",
+      data: {
+        labels: [
+          "Sensor 1",
+          "Sensor 2",
+          "Sensor 4",
+  
+        ],
+        datasets: [
+          {
+            label: "Umidade dos Sensores Acima de 20%",
+            data: [70, 49, 32],
+            backgroundColor: "rgba(90, 174, 17, 0.655)",
+            borderColor: "rgba(90, 174, 17, 0.655)",
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: { y: { beginAtZero: true, max: 100 } },
+      },
+    });
+
+    // Gráfico 2: Sensores Abaixo de 20%
+    new Chart(document.getElementById("graficoAbaixoSensor"), {
+      type: "bar",
+      data: {
+        labels: ["Sensor 3"],
+        datasets: [
+          {
+            label: "Umidade dos Sensores Abaixo de 20%",
+            data: [10],
+            backgroundColor: "rgba(188, 10, 10, 0.943)",
+            borderColor: "rgba(188, 10, 10, 0.943)",
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: { y: { beginAtZero: true, max: 100 } },
+      },
+    });
+
+    function geral() {
+      grafico_geral.style.display = "flex"
+      grafico_sensor.style.display = "none"
+      div_kpis.innerHTML = `
+      <div class="kpi">
+            <div>Média de umidade dos hectares:<p>42,8%</p></div>
+        </div>
+        <div class="kpi">
+            <div>Quantidade de hectares abaixo do ideal:<p>3</p></div>
+        </div>
+        <div class="kpi">
+            <div>Risco de queimada:<p style="color: rgb(226, 233, 91);">Média ( 21.4% ) </p></div>
+        </div>
+        <div class="kpi">
+            <div>Variação de umidade média (24 horas):<p style="color: rgb(255, 0, 0);">-3.5%</p></div>
+        </div>
+      `   
+    }
+
+    function sensor() {
+      grafico_geral.style.display = "none"
+      grafico_sensor.style.display = "flex"   
+      div_kpis.innerHTML = `
+      <div class="kpi">
+            <div>Média de umidade dos sensores:<p>40,2%</p></div>
+        </div>
+        <div class="kpi">
+            <div>Quantidade de sensores abaixo do ideal:<p>1</p></div>
+        </div>
+        <div class="kpi">
+            <div>Risco de queimada:<p style="color: rgb(226, 233, 91);">Média ( 25.0% ) </p></div>
+        </div>
+        <div class="kpi">
+            <div>Variação de umidade média (24 horas):<p style="color: rgb(255, 0, 0);">-8.3%</p></div>
+        </div>
+      `   
+    }
+
+  </script>
 </html>
