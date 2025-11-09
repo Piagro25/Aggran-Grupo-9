@@ -1,218 +1,266 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DashBoard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<style>
-      canvas {
-      width: 60% !important;
-      height: 100% !important;
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <style>
+    canvas {
+      width: 50% !important;
+      height: 400px !important;
+      margin-bottom: 30px;
     }
+  </style>
 
-</style>
-<body>
-   <div class="header">
-      <div class="logo_wrapper">
-      <img class="logo" width="105px" height="40px" src="./Assets/logo_header.png" alt="" onclick="imagemVolta()">
-      <img class="logo" width="21.27px" height=39px" src="./Assets/folha_header.png" alt="" onclick="imagemVolta()"> 
-    </div> 
-      <ul class="navbar">
-        <li>
-          <a href="homepage.html">Home</a>
-        </li>
-        <li>
-          <a href="">Tecnologia</a>
-        </li>
-        <li>
-          <a href="">Quem somos</a>
-        </li>
-        <li>
-          <a href="">Fale Conosco</a>
-        </li>
-        <li>
-          <a href="cadastro.html">Primeiro Acesso</a>
-        </li>
-      </ul>
-      <button>
-        <a href="login.html">Área do Cliente</a>
-      </button>
+  <body>
+
+    <div class="header">
+        <div class="logo_wrapper">
+            <img class="logo" width="105px" height="40px" src="./Assets/logo_header.png" alt="">
+            <img class="logo" width="21.27px" height=39px" src="./Assets/folha_header.png" alt="">
+        </div>
+        <ul class="navbar">
+            <li>
+                <a href="homepage.html">Home</a>
+            </li>
+            <li>
+                <a href="">Tecnologia</a>
+            </li>
+            <li>
+                <a href="">Quem somos</a>
+            </li>
+            <li>
+                <a href="">Fale Conosco</a>
+            </li>
+            <li>
+                <a href="cadastro.html">Primeiro Acesso</a>
+            </li>
+        </ul>
+        <button class="agora">
+            <a href="login.html">Área do Cliente</a>
+        </button>
     </div>
 
-    <div class="medições">
-    <label for="sensorSelect"><strong>Escolha as medições:</strong></label>
-    <select id="sensorSelect" multiple>
-        <option value="Média" selected>Média</option>
-        <option value="Sensor1" selected>Sensor 1</option>
-        <option value="Sensor2" selected>Sensor 2</option>
-        <option value="Sensor3" selected>Sensor 3</option>
-        <option value="Sensor4" selected>Sensor 4</option>
-        <option value="Sensor5" selected>Sensor 5</option>
-        <option value="Sensor6" selected>Sensor 6</option>
-    </select>
+    <div id="dash">
+    <div class="ola">
+        <div>Olá, Fernando Brandão.</div>
+    </div>
+    <div class="kpis" id="div_kpis">
+        <div class="kpi">
+            <div>Média de umidade dos sensores:<p>42,8%</p></div>
+        </div>
+        <div class="kpi">
+            <div>Quantidade de sensores abaixo do ideal:<p>3</p></div>
+        </div>
+        <div class="kpi">
+            <div>Risco de queimada:<p style="color: rgb(226, 233, 91);">Média ( 21.4% ) </p></div>
+        </div>
+        <div class="kpi">
+            <div>Variação de umidade média (24 horas):<p style="color: rgb(255, 0, 0);">-3.5%</p></div>
+        </div>
     </div>
 
-    <div class="container">
-        <canvas id="lineChart"></canvas>
+    <div class="sessão_dash">
+        <div class="botoes_dash">
+            <button onclick="geral()">Visão geral dos hectares</button>
+          
+            <button onclick="sensor()">Visão do hectar 1</button>
+        </div>
     </div>
 
-        
+        <div class="container_dash" id="grafico_geral">
+            <canvas id="graficoAcimaGeral"></canvas>
+            <canvas id="graficoAbaixoGeral"></canvas>
+        </div>
+
+        <div class="container_dash" id="grafico_sensor" style="display: none;">
+            <canvas id="graficoAcimaSensor"></canvas>
+            <canvas id="graficoAbaixoSensor"></canvas>
+        </div>
+    </div>
+    </div>
+
+
     <div class="footer">
         <div class="footer_wrapper">
-          <ul>
-            <li>
-              <a href="">Home</a>
-            </li>
-            <li>
-              <a href="">Tecnologia</a>
-            </li>
-            <li>
-              <a href="">Quem Somos</a>
-            </li>
-            <li>
-              <a href="">Fale Conosco</a>
-            </li>
-            <li>
-              <a href="">Primeiro Acesso</a>
-            </li>
-            <li>
-              <a href="">Área do Cliente</a>
-            </li>
-            <li>
-              <a href="">Política de Privacidade</a>
-            </li>
-            <li>
-              <a href="">Aviso Legal</a>
-            </li>
-          </ul>
-          <div class="footer_logo_wrapper">
-            <img width="32px" height="60px" src="./Assets/folha_footer.png" alt="">
-            <img width="250px" height="90px" src="./Assets/logo_footer.png" alt="">
-          </div>
+            <ul>
+                <li>
+                    <a href="">Home</a>
+                </li>
+                <li>
+                    <a href="">Tecnologia</a>
+                </li>
+                <li>
+                    <a href="">Quem Somos</a>
+                </li>
+                <li>
+                    <a href="">Fale Conosco</a>
+                </li>
+                <li>
+                    <a href="">Primeiro Acesso</a>
+                </li>
+                <li>
+                    <a href="">Área do Cliente</a>
+                </li>
+                <li>
+                    <a href="">Política de Privacidade</a>
+                </li>
+                <li>
+                    <a href="">Aviso Legal</a>
+                </li>
+            </ul>
+            <div class="footer_logo_wrapper">
+                <img width="32px" height="60px" src="./Assets/folha_footer.png" alt="">
+                <img width="250px" height="90px" src="./Assets/logo_footer.png" alt="">
+            </div>
         </div>
         <p> &copy; 2025 AGGRAN. Todos os direitos reservados</p>
     </div>
 </body>
 
-<script>
-    const ctxline = document.getElementById('lineChart');
+  <script>
 
-    const chart = new Chart(ctxline, {
-        type: 'line',
-        data: {
-            labels: [
-                '00:00','01:00','02:00','03:00','04:00','05:00','06:00','07:00','08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00',
-            ],
-            datasets: [
-                {
-                    label: 'Média',
-                    data: [47, 47.6, 46.6, 49.3, 48, 47.3, 48.1, 49.1, 48.1, 49.6, 48.1, 47.1, 46.7, 47.1, 46.4, 46.2, 45.2, 46.5, 48.2, 49.3, 47.2, 46.3, 49, 46.2],
-                    borderColor: 'black',
-                    backgroundColor: 'rgba(0, 0, 0)',
-                    borderWidth: 2,
-                    pointRadius: 0,
-                },
-                {
-                    label: 'Limite de Umidade',
-                    data: [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20],
-                    borderColor: 'red',
-                    backgroundColor: 'rgba(255, 0, 0)',
-                    borderWidth: 2,
-                    pointRadius: 0,
-                    borderDash: [6, 6],
-                },
-                {
-                    label: 'Sensor1',
-                    data: [70, 72, 70, 75, 70, 73, 70, 72, 70, 75, 70, 73, 70, 72, 70, 75, 70, 73, 70, 72, 70, 75, 70, 73],
-                    borderColor: 'blue',
-                    backgroundColor: 'rgba(0, 0, 255)',
-                    borderWidth: 2,
-                    pointRadius: 0,
-                },
-                {
-                    label: 'Sensor2',
-                    data: [21, 23, 21, 26, 21, 22, 21, 21, 21, 24, 20, 18, 19, 21, 19, 24, 21, 22, 21, 20, 21, 24, 19, 22],
-                    borderColor: 'green',
-                    backgroundColor: 'rgba(0, 255, 0)',
-                    borderWidth: 2,
-                    pointRadius: 0,
-                },
-                {
-                    label: 'Sensor3',
-                    data: [31, 32, 33, 32, 35, 34, 29, 32, 33, 36, 33, 34, 32, 34, 36, 30, 31, 32, 33, 35, 33, 32, 31, 32],
-                    borderColor: 'purple',
-                    backgroundColor: 'rgba(157, 0, 255)',
-                    borderWidth: 2,
-                    pointRadius: 0,
-                },
-                {
-                    label: 'Sensor4',
-                    data: [43, 45, 42, 47, 45, 43, 48, 44, 45, 47, 43, 45, 42, 44, 46, 40, 41, 43, 42, 43, 45, 42, 44, 40],
-                    borderColor: 'yellow',
-                    backgroundColor: 'rgba(255, 255, 0)',
-                    borderWidth: 2,
-                    pointRadius: 0,
-                },
-                {
-                    label: 'Sensor5',
-                    data: [55, 53, 51, 54, 53, 52, 56, 58, 56, 54, 55, 54, 52, 54, 52, 50, 49, 50, 51, 54, 56, 52, 53, 51],
-                    borderColor: 'grey',
-                    backgroundColor: 'rgba(128, 128, 128)',
-                    borderWidth: 2,
-                    pointRadius: 0,
-                },
-                {
-                    label: 'Sensor6',
-                    data: [62, 61, 63, 62, 64, 60, 65, 68, 64, 62, 66, 65, 63, 66, 69, 68, 67, 64, 63, 62, 65, 63, 62, 61],
-                    borderColor: 'orange',
-                    backgroundColor: 'rgba(255, 165, 0)',
-                    borderWidth: 2,
-                    pointRadius: 0,
-                },
-            ]
-        },
-        options: {
-            scales: {
-                y: { beginAtZero: true }
-            },
-            plugins: {
-                legend: {
-                    onClick: (e, legendItem, legend) => {
-                        const datasetLabel = legendItem.text;
-                        if (datasetLabel === 'Limite de Umidade') {
-                            return;
-                        }
-                        const index = legendItem.datasetIndex;
-                        const ci = legend.chart;
-                        const meta = ci.getDatasetMeta(index);
-                        meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
-                        ci.update();
-                    }
-                }
-            }
-        }
-    });
+    // Grafico 1: Sensores Acima de 20%
     
-    const select = document.getElementById('sensorSelect');
-    select.addEventListener('change', () => {
-        const selecionados = Array.from(select.selectedOptions).map(opt => opt.value);
-        chart.data.datasets.forEach(ds => {
-            if (ds.label === 'Limite de Umidade') {
-                ds.hidden = false;
-            } else {
-                ds.hidden = !selecionados.includes(ds.label);
-            }
-        });
-        chart.update();
+    new Chart(document.getElementById("graficoAcimaGeral"), {
+      type: "bar",
+      data: {
+        labels: [
+          "Hectar 1",
+          "Hectar 3",
+          "Hectar 4",
+          "Hectar 5",
+          "Hectar 6",
+          "Hectar 7",
+          "Hectar 9",
+          "Hectar 10",
+          "Hectar 11",
+          "Hectar 12",
+          "Hectar 13",
+        ],
+        datasets: [
+          {
+            label: "Umidade dos Hectares Acima de 20%",
+            data: [70, 49, 32, 45, 53, 63, 49, 42, 62, 39, 65],
+            backgroundColor: "rgba(90, 174, 17, 0.655)",
+            borderColor: "rgba(90, 174, 17, 0.655)",
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: { y: { beginAtZero: true, max: 100 } },
+      },
     });
 
-    function imagemVolta() {
-      window.location.href = "homepage.html"
-    }
-</script>
+    // Gráfico 2: Sensores Abaixo de 20%
+    new Chart(document.getElementById("graficoAbaixoGeral"), {
+      type: "bar",
+      data: {
+        labels: ["Hectar 2", "Hectar 8", "Hectar 14"],
+        datasets: [
+          {
+            label: "Umidade dos Hectares Abaixo de 20%",
+            data: [18, 14, 10],
+            backgroundColor: "rgba(188, 10, 10, 0.943)",
+            borderColor: "rgba(188, 10, 10, 0.943)",
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: { y: { beginAtZero: true, max: 100 } },
+      },
+    });
 
+    //
+
+    // Grafico 1: Sensores Acima de 20%
+    
+    new Chart(document.getElementById("graficoAcimaSensor"), {
+      type: "bar",
+      data: {
+        labels: [
+          "Sensor 1",
+          "Sensor 2",
+          "Sensor 4",
+  
+        ],
+        datasets: [
+          {
+            label: "Umidade dos Sensores Acima de 20%",
+            data: [70, 49, 32],
+            backgroundColor: "rgba(90, 174, 17, 0.655)",
+            borderColor: "rgba(90, 174, 17, 0.655)",
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: { y: { beginAtZero: true, max: 100 } },
+      },
+    });
+
+    // Gráfico 2: Sensores Abaixo de 20%
+    new Chart(document.getElementById("graficoAbaixoSensor"), {
+      type: "bar",
+      data: {
+        labels: ["Sensor 3"],
+        datasets: [
+          {
+            label: "Umidade dos Sensores Abaixo de 20%",
+            data: [10],
+            backgroundColor: "rgba(188, 10, 10, 0.943)",
+            borderColor: "rgba(188, 10, 10, 0.943)",
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: { y: { beginAtZero: true, max: 100 } },
+      },
+    });
+
+    function geral() {
+      grafico_geral.style.display = "flex"
+      grafico_sensor.style.display = "none"
+      div_kpis.innerHTML = `
+      <div class="kpi">
+            <div>Média de umidade dos hectares:<p>42,8%</p></div>
+        </div>
+        <div class="kpi">
+            <div>Quantidade de hectares abaixo do ideal:<p>3</p></div>
+        </div>
+        <div class="kpi">
+            <div>Risco de queimada:<p style="color: rgb(226, 233, 91);">Média ( 21.4% ) </p></div>
+        </div>
+        <div class="kpi">
+            <div>Variação de umidade média (24 horas):<p style="color: rgb(255, 0, 0);">-3.5%</p></div>
+        </div>
+      `   
+    }
+
+    function sensor() {
+      grafico_geral.style.display = "none"
+      grafico_sensor.style.display = "flex"   
+      div_kpis.innerHTML = `
+      <div class="kpi">
+            <div>Média de umidade dos sensores:<p>40,2%</p></div>
+        </div>
+        <div class="kpi">
+            <div>Quantidade de sensores abaixo do ideal:<p>1</p></div>
+        </div>
+        <div class="kpi">
+            <div>Risco de queimada:<p style="color: rgb(226, 233, 91);">Média ( 25.0% ) </p></div>
+        </div>
+        <div class="kpi">
+            <div>Variação de umidade média (24 horas):<p style="color: rgb(255, 0, 0);">-8.3%</p></div>
+        </div>
+      `   
+    }
+
+  </script>
 </html>

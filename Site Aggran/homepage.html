@@ -44,9 +44,11 @@
         <h2>CUIDAR DO SOLO É CUIDAR DO FUTURO <a target="_blank" href="https://youtu.be/dQw4w9WgXcQ?si=_T39SVePDrDaFr0D"><img class="logo" width="21.27px" height="39px"
             src="./Assets/folha_header.png" alt=""></a></h2>
         <p>
-          Nosso sensor IoT ajuda pequenos e médios produtores a agir antes que o fogo se espalhe, reduzindo
+          <!-- Nosso sensor IoT ajuda pequenos e médios produtores a agir antes que o fogo se espalhe, reduzindo
           riscos
-          de queimadas, evitando multas e preservando a produtividade da terra.
+          de queimadas, evitando multas e preservando a produtividade da terra. -->
+
+          Com nosso sensor IoT, ajudamos a sua produção a se manter segura, gerando dashboards de visualização para que ações sejam tomadas antes que o fogo se espalhe, reduzindo os riscos de queimadas, evitando multas e preservando a qualidade de seu solo.
         </p>
 
       </div>
@@ -134,10 +136,10 @@
         <span class="titulo_mensagem">Resultados</span>
         <div id="div_mensagem3"></div>
           <br>
-        <div id="div_msgTerraIndigena" class="indio"></div> 
+        <div id="div_msgTerraIndigena" class="indio" style="display: none;"></div> 
           <br>
         <div id="div_mensagem4"></div>
-          
+
         <button onclick="voltar()">Voltar</button>
       </div>
       
@@ -155,32 +157,36 @@
 
     <div class="depoimentos_container">
       <div class="cliente_a">
-        <h3>Cliente A</h3>
+        <img src="./Assets/foto_cliente.jpg" alt="foto_cliente" width="60px" height="60px" style="border-radius: 100px;">
+        <h3>José Farias</h3>
         <span>4.5</span>
+         <img src="./Assets/estrela2_cliente.png" alt="estrela" width="30px" height="30px" style="border-radius: 100px; margin-bottom: 10px;">
         <p>
           “Com o sensor de umidade, consegui monitorar melhor minhas áreas de cultivo e agir antes que
           qualquer foco de incêndio se espalhasse. Isso me trouxe tranquilidade e reduziu muito os riscos
           na
           produção.”
         </p>
-
       </div>
 
       <div class="cliente_b">
-        <h3>Cliente B</h3>
+        <img src="./Assets/foto_cliente.jpg" alt="foto_cliente" width="60px" height="60px" style="border-radius: 100px;">
+        <h3>Calebe Pereira</h3>
         <span>4.5</span>
+         <img src="./Assets/estrela2_cliente.png" alt="estrela" width="30px" height="30px" style="border-radius: 100px; margin-bottom: 10px;">
         <p>
           “Antes eu não tinha noção real do prejuízo que um incêndio poderia causar. A calculadora e o
           sensor
           mostraram claramente os custos de recuperação e das multas. Hoje enxergo o investimento como
           essencial.”
         </p>
-
       </div>
 
       <div class="cliente_c">
-        <h3>Cliente C</h3>
+        <img src="./Assets/foto_cliente.jpg" alt="foto_cliente" width="60px" height="60px" style="border-radius: 100px;">
+        <h3>Marcos Antônio</h3>
         <span>4.5</span>
+        <img src="./Assets/estrela2_cliente.png" alt="estrela" width="30px" height="30px" style="border-radius: 100px; margin-bottom: 10px;">
         <p>
           “A instalação foi simples e os dados são fáceis de acompanhar. Para mim, o maior benefício é
           saber
@@ -196,48 +202,124 @@
 
 
   <div class="footer">
-    <div class="footer_wrapper">
-      <ul>
-        <li>
-          <a href="">Home</a>
-        </li>
-        <li>
-          <a href="">Tecnologia</a>
-        </li>
-        <li>
-          <a href="">Quem Somos</a>
-        </li>
-        <li>
-          <a href="">Fale Conosco</a>
-        </li>
-        <li>
-          <a href="">Primeiro Acesso</a>
-        </li>
-        <li>
-          <a href="">Área do Cliente</a>
-        </li>
-        <li>
-          <a href="">Política de Privacidade</a>
-        </li>
-        <li>
-          <a href="">Aviso Legal</a>
-        </li>
-      </ul>
-      <div class="footer_logo_wrapper">
-        <img width="32px" height="60px" src="./Assets/folha_footer.png" alt="">
-        <img width="250px" height="90px" src="./Assets/logo_footer.png" alt="">
+      <div class="footer_wrapper">
+        <ul>
+          <li>
+            <a href="homepage.html">Home</a>
+          </li>
+          <li>
+            <a href="">Tecnologia</a>
+          </li>
+          <li>
+            <a href="">Quem Somos</a>
+          </li>
+          <li>
+            <a href="">Fale Conosco</a>
+          </li>
+          <li>
+            <a href="cadastro.html">Primeiro Acesso</a>
+          </li>
+          <li>
+            <a href="login.html">Área do Cliente</a>
+          </li>
+          <li>
+            <a href="">Política de Privacidade</a>
+          </li>
+          <li>
+            <a href="">Aviso Legal</a>
+          </li>
+        </ul>
+        <div class="footer_logo_wrapper">
+          <img
+            width="32px"
+            height="60px"
+            src="./Assets/folha_footer.png"
+            alt=""
+          />
+          <img
+            width="250px"
+            height="90px"
+            src="./Assets/logo_footer.png"
+            alt=""
+          />
+        </div>
       </div>
+      <p>&copy; 2025 AGGRAN. Todos os direitos reservados</p>
     </div>
+<<<<<<< HEAD
     <p> &copy; 2025 AGGRAN. Todos os direitos reservados</p>
   </div>
 
   
+=======
+>>>>>>> 68083380e8061656678463b53ead799deb41a73f
 </body>
 </html>
 <script>
+<<<<<<< HEAD
     function voltar() {
       simulador_texto.style.display = "flex";
       div_mensagens.style.display = "none";
+=======
+
+  function voltar() {
+    simulador_texto.style.display = "flex";
+    div_mensagens.style.display = "none";
+
+  }
+
+  function submitado(event) {
+    event.preventDefault()
+  }
+
+  //Código HTML e JS desenvolvidos por Aurora Carvalho.
+  //Código aprimorado e revisado por Grupo 9 - Aggran.
+  //Variáveis Globais
+
+  //Valores das multas
+  var multasAgro = 3000
+  var multasNativa = 10000
+
+  //Custos de recuperação de solo total por hectare
+  var custo_lavoura = 800
+  var custo_pastagem = 4400
+  var custo_perene = 6000
+  var custo_nativa = 17000
+
+  //Custos de prejuizo
+  var prejuizoNativa = 0
+
+  //Calculos de prejuizo Meio de safra
+  var prejuizoProdMeio = 0
+  var prejuizoBrutoTotalMeio = 0
+  var prejuizoEsperadoSSensorMeio = 0
+  var prejuizoEsperadoCSensorMeio = 0
+
+  //Calculos de prejuizo Pos safra
+  var prejuizoProdPos = 0
+  var prejuizoBrutoTotalPos = 0
+  var prejuizoEsperadoSSensorPos = 0
+  var prejuizoEsperadoCSensorPos = 0
+
+  //Calculo de economia
+  var economiaTotal = 0
+
+  //Meses de recuperação (consequentemente sem produção)
+  var mesesRecuperacao = 0
+
+  function calcular_economia() {
+
+    
+
+    //Validação de entradas: o preenchimento de todos os campos é obrigatório, senão uma mensagem de erro é exibida e o programa retorna ao início.
+    var erro = false
+
+    if (select_producao.value === "") {
+      // aviso.style.display = "inline"
+      erro = true
+    } else {
+      // aviso.style.display = "none"
+>>>>>>> 68083380e8061656678463b53ead799deb41a73f
     }
 
     function submitado(event) {
@@ -410,6 +492,7 @@
         `
 
 
+<<<<<<< HEAD
       div_mensagem2.innerHTML = `
         Em casos de incêndio <b>pós safra</b>, o prejuízo esperado chega a <b>${prejuizoEsperadoSSensorPos.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}.</b>
       `
@@ -425,9 +508,17 @@
       } else {
         div_msgTerraIndigena.innerHTML = ""
       }
+=======
+    if (TerraInd) {
+      div_msgTerraIndigena.style.display = "flex"
+      div_msgTerraIndigena.innerHTML = "<i>Em áreas com presença de terras indígenas, as penalidades podem ser significativamente maiores que as estimadas pela calculadora, incluindo custos legais adicionais não contemplados neste modelo.</i> <br> <br>"
+    } else {
+      div_msgTerraIndigena.style.display = "none"
+>>>>>>> 68083380e8061656678463b53ead799deb41a73f
     }
 
     function imagemVolta() {
       window.location.href = "homepage.html"
     }
+
 </script>

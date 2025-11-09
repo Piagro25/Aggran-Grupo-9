@@ -83,7 +83,19 @@ body {
     border: 2px solid black;
     border-radius: 8px;
     background-color: transparent;
+    transition: all 0.3s;
 
+}
+
+.header button:hover {
+    padding: 10px 15px;
+    border: 2px solid #006838;
+    border-radius: 8px;
+    background-color:#006838
+}
+
+.header button:hover a {
+    color:#E9F4DA
 }
 
 /* 
@@ -91,7 +103,7 @@ Aqui inicia-se o homepage
 e se finaliza o header
 */
 .content-wrapper {
-    flex-grow: 1;
+    width: 100%;
     padding-top: 80px;
     display: flex;
     justify-content: center;
@@ -123,8 +135,9 @@ e se finaliza o header
     font-family: Anton;
     margin-bottom: 15px;
     color: #2E7D32;
-    font-size: 40px;
+    font-size: 35px;
     text-align: left;
+    width: 270px;
 }
 
 .main_text p {
@@ -376,7 +389,7 @@ e se finaliza o header
     margin-bottom: 80px;
 }
 
-.depoimentos_container .cliente_a {
+.cliente_a {
     border: 1px solid green;
     background-color: #E9F4DA;
     border-radius: 10px;
@@ -385,7 +398,7 @@ e se finaliza o header
     color: black;
 }
 
-.depoimentos_container .cliente_a h3 {
+.cliente_a h3, .cliente_a span {
     /* Força o H3 a ficar lado a lado */
     display: inline-block;
 
@@ -393,10 +406,11 @@ e se finaliza o header
     vertical-align: middle;
 
     /*Remove margem inferior que pode estar empurrando o span */
-    margin-bottom: 0;
+    margin-bottom: 30px;
+    margin-left: 10px;
 }
 
-.depoimentos_container .cliente_b {
+.cliente_b {
     border: 1px solid green;
     background-color: #E9F4DA;
     border-radius: 10px;
@@ -405,13 +419,14 @@ e se finaliza o header
     color: black;
 }
 
-.depoimentos_container .cliente_b h3 {
+.cliente_b h3, .cliente_b span  {
     display: inline-block;
     vertical-align: middle;
-    margin-bottom: 0;
+    margin-bottom: 30px;
+    margin-left: 10px;
 }
 
-.depoimentos_container .cliente_c {
+.cliente_c {
     border: 1px solid green;
     background-color: #E9F4DA;
     border-radius: 10px;
@@ -420,10 +435,11 @@ e se finaliza o header
     color: black;
 }
 
-.depoimentos_container .cliente_c h3 {
+.cliente_c h3, .cliente_c span{
     display: inline-block;
     vertical-align: middle;
-    margin-bottom: 0;
+    margin-bottom: 30px;
+    margin-left: 10px;
 }
 
 .aviso {
@@ -471,8 +487,20 @@ e se finaliza o homepage
     width: 30vw;
 }
 
+.form_inputs {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    justify-self: center;
+    align-self: center;
+    flex-direction: column;
+}
+
 .form_inputs div{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-self: center;
     flex-direction: column;
     margin-bottom: 20px;
     
@@ -486,6 +514,7 @@ e se finaliza o homepage
     color:  #006838;
     font-weight: bold;
     margin-bottom: -15px;
+    font-size: 20px;
     
 }
 
@@ -494,12 +523,12 @@ e se finaliza o homepage
     justify-content: flex-end;
     align-items: flex-end; 
     justify-self: flex-end;
-    font-style: italic;
-    
+    font-style: italic;    
+    font-size: 14px;
 }
 
 .form_inputs div input {
-    width: 100%;
+    width: 260px;
     height: 50px;
     font-family: Montserrat;
     background-color: #e9f4da;
@@ -552,6 +581,10 @@ e se finaliza o homepage
     color: black;
 }
 
+.a_senha {
+    cursor: pointer;
+}
+
 .div_corpo_login span a:link,
 .div_corpo_login span a:visited,
 .div_corpo_login span a:active {
@@ -596,19 +629,29 @@ e se finaliza o login
     justify-self: flex-start;
     align-self: center;
     flex-direction: column;
-    margin: 30px 280px 45px 0  ;
+    margin: 30px 320px 45px 0  ;
     
+}
+
+.botões_tipo_cadastro {
+    display: flex;
+    height: 300px;
+    flex-direction: row;
+    gap: 20px;
 }
 
 .formulario {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .config {
-    display: block;
-    width: 500px;
-    flex-direction: row;
+    display: flex;
+    width: 550px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     
 }
  .config form {
@@ -621,7 +664,7 @@ e se finaliza o login
  }
 
 .config form div input{
-    width: 240px;
+    width: 250px;
     height: 50px;
     font-family: Montserrat;
     background-color: #E9F4DA;
@@ -634,7 +677,7 @@ e se finaliza o login
 }
 
 .select_produção{
-    width: 240px;
+    width: 250px;
     height: 50px;
     background-color: #E9F4DA;
     border-radius: 10px;
@@ -763,3 +806,119 @@ e se finaliza o cadastro
 
     
 }
+
+/* Dashboard */
+
+.dash {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ola {
+    width: 300px;
+    margin: 10px;
+    padding: 15px;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: #006838;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+}
+
+/* kpi */
+
+.kpis {
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+    justify-self: center;
+    flex-wrap: wrap;
+    background-color: #2E7D32;;
+    padding: 5px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 14px;
+}
+
+.kpi {
+    width: fit-content;
+    height: fit-content;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: #006838;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.kpi div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* gráficos */
+
+.container_dash {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    width: 900px;
+    height: 400px;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: 0px 8px 12px grey;
+    border-radius: 10px;
+    background-color: #ffffff;
+    gap: 10px;
+    padding: 0px 20px;
+}
+
+.botoes_dash {
+    display: flex;
+    width: fit-content;
+    padding-top: 20px;
+    flex-direction: row;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.botoes_dash button {
+    width: 200px;
+    height: 50px;
+    font-size: 12px;
+    font-family: Anton;
+    color: white;
+    background-color: #2E7D32;
+    border: #006838;
+    border-radius: 10px;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: all 0.5s;
+}
+
+.botoes_dash button:hover {
+    scale: 1.1;
+    cursor: pointer;
+    
+}
+
+
