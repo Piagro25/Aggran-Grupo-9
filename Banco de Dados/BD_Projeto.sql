@@ -7,7 +7,6 @@ CREATE TABLE Cadastro (
     cnpj VARCHAR(14) NOT NULL UNIQUE,
     nomeEmpresa VARCHAR(50) DEFAULT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-	CONSTRAINT chkEmail CHECK(email LIKE '%@%.%'),
     senha VARCHAR(255) NOT NULL,
     cep VARCHAR(14) NOT NULL,
 	logradouro VARCHAR(40) NOT NULL,
@@ -17,8 +16,9 @@ CREATE TABLE Cadastro (
     cidade VARCHAR(40) NOT NULL,
     uf CHAR(2) NOT NULL,
     tipoProducao VARCHAR(10),
-    CONSTRAINT tipoProducao CHECK(email IN ('Lavoura', 'Pastagem', 'Perene')),
-    dataCadastro DATETIME DEFAULT current_timestamp
+    dataCadastro DATETIME DEFAULT current_timestamp,
+    CONSTRAINT chkEmail CHECK(email LIKE '%@%.%'),
+    CONSTRAINT chktipoProducao CHECK(tipoProducao IN ('Lavoura', 'Pastagem', 'Perene'))
 );
 
 CREATE TABLE Usuario (
@@ -27,10 +27,10 @@ CREATE TABLE Usuario (
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
     statusCliente VARCHAR(10),
-    CONSTRAINT chkCliente CHECK (statusCliente IN ('Ativo', 'Inativo')),
     dataStatus DATETIME DEFAULT current_timestamp,
     dataCadastro DATETIME DEFAULT current_timestamp,
     fkidCadastro INT NOT NULL,
+    CONSTRAINT chkCliente CHECK (statusCliente IN ('Ativo', 'Inativo')),
     CONSTRAINT fkcadastroUsuario FOREIGN KEY (fkidCadastro) REFERENCES Cadastro(idCadastro)
 );
 
@@ -81,3 +81,52 @@ CREATE TABLE Registro (
 );
 
 SELECT umidadeSolo FROM registro;
+
+INSERT INTO Cadastro (nomeResponsavel, cnpj, nomeEmpresa, email, senha, cep, logradouro, numero, complemento, bairro, cidade, uf, tipoProducao)
+VALUES
+('Fernando Brandão', '12345678000199', 'SPtech agro', 'brandão@mail.com', '123456', '01310923', 'Itaim bibi', 120, NULL, 'Plano Diretor Norte', 'Palmas', 'TO', 'Lavoura'),
+('Julia', '98765432000155', 'Verde mata', 'julia@mail.com', 'senha123', '88010000', 'Av. das Planta', 450, 'Sala 2', 'Centro', 'Uberlândia', 'MG', 'Pastagem'),
+('Vivian', '45678912000133', 'Dadosplus', 'vivian@mail.com', 'plant2024', '74000000', 'Rua Balneario', 80, NULL, 'Setor Central', 'Goiânia', 'GO', 'Perene');
+
+INSERT INTO Usuario (nome, email, senha, statusCliente, fkidCadastro)
+VALUES
+('Brandão', 'brandao@mail.com', 'senha123', 'Ativo', 1),
+('Julia', 'julia@mail.com', 'verde2024', 'Ativo', 2),
+('Vivian', 'viviana@mail.com', 'planta123', 'Inativo', 3);
+
+INSERT INTO LoteSensor (numeroLote)
+VALUES
+(1001),
+(1002),
+(1003);
+
+INSERT INTO Sensor (numeroSensor, latitudeSensor, longitudeSensor, fkidCadastro, fkidloteSensor)
+VALUES
+('SENS-001', -10.184445, -48.333619, 1, 1), 
+('SENS-002', -18.918804, -48.276783, 2, 2),  
+('SENS-003', -20.442778, -54.646389, 3, 3); 
+
+INSERT INTO UsuarioSensor (fkidUsuario, fkidSensor)
+VALUES
+(1, 1),
+(2, 2),
+(3, 3);
+
+INSERT INTO StatusSensor (statusSensor, tipoFalha, descricao, fkidSensor)
+VALUES
+('Em uso', 'Sem falhas', 'Sensor operando', 1),
+('Manutenção', 'Arduino', 'Falha', 2),
+('Para uso', 'Sem falhas', 'Pronto para instalação no lote 3.', 3);
+
+INSERT INTO Registro (umidadeSolo, fkidSensor)
+VALUES
+(31.7, 1),
+(26.3, 2),
+(44.8, 3);
+
+
+
+
+
+
+
