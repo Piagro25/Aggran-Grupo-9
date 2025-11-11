@@ -246,21 +246,11 @@
       </div>
       <p>&copy; 2025 AGGRAN. Todos os direitos reservados</p>
     </div>
-<<<<<<< HEAD
-    <p> &copy; 2025 AGGRAN. Todos os direitos reservados</p>
-  </div>
-
-  
-=======
->>>>>>> 68083380e8061656678463b53ead799deb41a73f
 </body>
+
 </html>
+
 <script>
-<<<<<<< HEAD
-    function voltar() {
-      simulador_texto.style.display = "flex";
-      div_mensagens.style.display = "none";
-=======
 
   function voltar() {
     simulador_texto.style.display = "flex";
@@ -311,7 +301,7 @@
 
     
 
-    //Validação de entradas: o preenchimento de todos os campos é obrigatório, senão uma mensagem de erro é exibida e o programa retorna ao início.
+    //Validação de entradas: o preenchimento de todos os campos é obrigatório, senão uma mensagem de erro é exibida e o programa retorna ao início
     var erro = false
 
     if (select_producao.value === "") {
@@ -319,205 +309,151 @@
       erro = true
     } else {
       // aviso.style.display = "none"
->>>>>>> 68083380e8061656678463b53ead799deb41a73f
     }
 
-    function submitado(event) {
-      event.preventDefault()
+    if (input_areaTotal.value === "") {
+      // aviso2.style.display = "inline"
+      erro = true
+    } else {
+      // aviso2.style.display = "none"
+    }
+    if (input_investimento.value === "") {
+      // aviso3.style.display = "inline"
+      erro = true
+    } else {
+      // aviso3.style.display = "none"
     }
 
-    //Código HTML e JS desenvolvidos por Aurora Carvalho.
-    //Variáveis Globais
+    if (input_lucroMensal.value === "") {
+      // aviso4.style.display = "inline"
+      erro = true;
+    } else {
+      // aviso4.style.display = "none"
+    }
 
-    //Valores das multas
-    var multasAgro = 3000
-    var multasNativa = 10000
+    if (!erro) {
+      simulador_texto.style.display = "none";
+      div_mensagens.style.display = "block";
+    }
 
-    //Custos de recuperação de solo total por hectare
-    var custo_lavoura = 800
-    var custo_pastagem = 4400
-    var custo_perene = 6000
-    var custo_nativa = 17000
+    if (erro) {
+      return
+    }
+    
 
-    //Custos de prejuizo
-    var prejuizoNativa = 0
 
-    //Calculos de prejuizo Meio de safra
-    var prejuizoProdMeio = 0
-    var prejuizoBrutoTotalMeio = 0
-    var prejuizoEsperadoSSensorMeio = 0
-    var prejuizoEsperadoCSensorMeio = 0
+    var tipoProd = select_producao.value.toLowerCase()
+    var areaTotal = Number(input_areaTotal.value)
+    var investimento = Number(input_investimento.value)
+    var lucroMensal = Number(input_lucroMensal.value)
+    var tecPrevent = input_TecPrevent.checked
+    var vegNativa = input_VegNativa.checked
+    var TerraInd = input_TerraInd.checked
 
-    //Calculos de prejuizo Pos safra
-    var prejuizoProdPos = 0
-    var prejuizoBrutoTotalPos = 0
-    var prejuizoEsperadoSSensorPos = 0
-    var prejuizoEsperadoCSensorPos = 0
 
-    //Calculo de economia
-    var economiaTotal = 0
+    //Excluindo a possibilidade da calculadora considerar uma economia em caso de incêndio caso o produtor insira lucro negativo (prejuízo)
+    if (lucroMensal < 0) {
+      lucroMensal = 0
+    }
 
-    //Meses de recuperação (consequentemente sem produção)
-    var mesesRecuperacao = 0
+    // Definição de probabilidade de incendio de acordo com o tam do produtor
+    if (areaTotal <= 200) {
+      var probIncendioBase = 15
 
-    // probabilidade de incendios
-    var probIncendioBase = 0
+    } else {
+      probIncendioBase = 20
+    }
 
-    function calcular_economia() {
+    // Se usar tecnicas de prevenção, o risco reduz em 30%
+    if (tecPrevent) {
+      var probIncendioAjustada = probIncendioBase - (probIncendioBase * 0.3)
+    } else {
+      probIncendioAjustada = probIncendioBase
+    }
 
-      //Validação de entradas
-      var erro = false
+    //Definição de área nativa x área produtiva
+    var areaNativa = 0;
+    var areaProd = areaTotal
 
-      if (select_producao.value === "") {
-        // aviso.style.display = "inline"
-        erro = true
-      } else {
-        // aviso.style.display = "none"
-      }
+    if (vegNativa) {
+      areaNativa = areaTotal * 0.2
+      areaProd = areaTotal - areaNativa
+    }
 
-      if (input_areaTotal.value === "") {
-        // aviso2.style.display = "inline"
-        erro = true
-      } else {
-        // aviso2.style.display = "none"
-      }
-      if (input_investimento.value === "") {
-        // aviso3.style.display = "inline"
-        erro = true
-      } else {
-        // aviso3.style.display = "none"
-      }
+    //Definição dos prejuizos baseados no tipo de produção e se a checkbox "Nativa" foi marcada
+    var custoRecuperacao = 0
 
-      if (input_lucroMensal.value === "") {
-        // aviso4.style.display = "inline"
-        erro = true;
-      } else {
-        // aviso4.style.display = "none"
-      }
+    if (tipoProd == "lavoura") {
+      custoRecuperacao = custo_lavoura
+      mesesRecuperacao = 4
+    }
+    if (tipoProd == "pastagem") {
+      custoRecuperacao = custo_pastagem
+      mesesRecuperacao = 6
+    }
+    if (tipoProd == "perene") {
+      custoRecuperacao = custo_perene
+      mesesRecuperacao = 8
+    }
 
-      if (!erro) {
-        simulador_texto.style.display = "none";
-        div_mensagens.style.display = "block";
-      }
+    var investMeioSafra = investimento * 0.5
+    var investPosSafra = investimento * 0.1
 
-      if (erro) {
-        return
-      }
 
-      var tipoProd = select_producao.value.toLowerCase()
-      var areaTotal = Number(input_areaTotal.value)
-      var investimento = Number(input_investimento.value)
-      var lucroMensal = Number(input_lucroMensal.value)
-      var tecPrevent = input_TecPrevent.checked
-      var vegNativa = input_VegNativa.checked
-      var TerraInd = input_TerraInd.checked
+    prejuizoProd_meioSafra = (lucroMensal * mesesRecuperacao) + custoRecuperacao + multasAgro + investMeioSafra
+    prejuizoProd_posSafra = (lucroMensal * mesesRecuperacao) + custoRecuperacao + multasAgro + investPosSafra
 
-      // Lucro negativo vira 0
-      if (lucroMensal < 0) {
-        lucroMensal = 0
-      }
 
-      // probabilidade de incendio (fração)
-      var taxaPorHectare = 1.6 / 100; // 1,6% por hectare
-      probIncendioBase = areaTotal * taxaPorHectare;
 
-      if (tecPrevent) {
-        probIncendioBase = probIncendioBase - (probIncendioBase * 0.3);
-      }
+    if (vegNativa) {
+      //O valor de lucro da vegetação nativa é 0 pois não há cultivo ou criação
+      prejuizoNativa = custo_nativa + multasNativa
+    } else { prejuizoNativa = 0 }
 
-      // limite como fração (0..1)
-      if (probIncendioBase > 1) {
-        probIncendioBase = 1;
-      }
+    //Prejuízo bruto total (multiplicando pela quantidade de hectares)
+    prejuizoBrutoTotalMeio = (prejuizoProd_meioSafra * areaProd) + (prejuizoNativa * areaNativa)
+    prejuizoBrutoTotalPos = (prejuizoProd_posSafra * areaProd) + (prejuizoNativa * areaNativa)
 
-      // variável que estava faltando
-      var probIncendioAjustada = probIncendioBase;
+    //Prejuízo esperado sem o uso do sensor
+    prejuizoEsperadoSSensorMeio = prejuizoBrutoTotalMeio * probIncendioAjustada
+    prejuizoEsperadoSSensorPos = prejuizoBrutoTotalPos * probIncendioAjustada
 
-      //Definição de área nativa x área produtiva
-      var areaNativa = 0;
-      var areaProd = areaTotal
+    //Prejuízo esperado com o uso do sensor 
+    // 50% de economia é um valor conservador baseado em literaturas técnicas de dispositivos tecnológicos de prevenção
+    prejuizoEsperadoCSensorMeio = prejuizoEsperadoSSensorMeio * 0.5
+    prejuizoEsperadoCSensorPos = prejuizoEsperadoSSensorPos * 0.5
 
-      if (vegNativa) {
-        areaNativa = areaTotal * 0.2
-        areaProd = areaTotal - areaNativa
-      }
+    //Economia total com o uso do sensor 
+    economiaTotalMeio = prejuizoEsperadoSSensorMeio - prejuizoEsperadoCSensorMeio
+    economiaTotalPos = prejuizoEsperadoSSensorPos - prejuizoEsperadoCSensorPos
 
-      //Definição dos prejuizos baseados no tipo de produção e se a checkbox "Nativa" foi marcada
-      var custoRecuperacao = 0
 
-      if (tipoProd == "lavoura") {
-        custoRecuperacao = custo_lavoura
-        mesesRecuperacao = 4
-      }
-      if (tipoProd == "pastagem") {
-        custoRecuperacao = custo_pastagem
-        mesesRecuperacao = 6
-      }
-      if (tipoProd == "perene") {
-        custoRecuperacao = custo_perene
-        mesesRecuperacao = 8
-      }
-
-      var investMeioSafra = investimento * 0.5
-      var investPosSafra = investimento * 0.1
-
-      prejuizoProd_meioSafra = (lucroMensal * mesesRecuperacao) + custoRecuperacao + multasAgro + investMeioSafra
-      prejuizoProd_posSafra = (lucroMensal * mesesRecuperacao) + custoRecuperacao + multasAgro + investPosSafra
-
-      if (vegNativa) {
-        //O valor de lucro da vegetação nativa é 0 pois não há cultivo ou criação
-        prejuizoNativa = custo_nativa + multasNativa
-      } else { prejuizoNativa = 0 }
-
-      //Prejuízo bruto total (multiplicando pela quantidade de hectares)
-      prejuizoBrutoTotalMeio = (prejuizoProd_meioSafra * areaProd) + (prejuizoNativa * areaNativa)
-      prejuizoBrutoTotalPos = (prejuizoProd_posSafra * areaProd) + (prejuizoNativa * areaNativa)
-
-      // fator (fração) para multiplicar valores
-      var fatorProb = probIncendioAjustada
-
-      //Prejuízo esperado sem o uso do sensor
-      prejuizoEsperadoSSensorMeio = prejuizoBrutoTotalMeio * fatorProb
-      prejuizoEsperadoSSensorPos = prejuizoBrutoTotalPos * fatorProb
-
-      //Prejuízo esperado com o uso do sensor (50% de economia)
-      prejuizoEsperadoCSensorMeio = prejuizoEsperadoSSensorMeio * 0.5
-      prejuizoEsperadoCSensorPos = prejuizoEsperadoSSensorPos * 0.5
-
-      //Economia total com o uso do sensor 
-      economiaTotalMeio = prejuizoEsperadoSSensorMeio - prejuizoEsperadoCSensorMeio
-      economiaTotalPos = prejuizoEsperadoSSensorPos - prejuizoEsperadoCSensorPos
-
-      div_mensagem1.innerHTML = `Com uma área de <b>${areaTotal} hectares</b> e baseando-se a uma probabilidade de incêndio de <b>${(probIncendioAjustada * 100).toFixed(2)}%*</b> o prejuizo esperado em caso de incêndio em <b>meio a safra</b> ao considerar multas e custos de recuperação do solo chegam a <b>${prejuizoEsperadoSSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}.</b>
+    div_mensagem1.innerHTML = `Com uma área de <b>${areaTotal} hectares</b> e baseando-se a uma probabilidade de incêndio de <b>${probIncendioAjustada.toFixed(2)}%*</b> o prejuizo esperado em caso de incêndio em <b>meio a safra</b> ao considerar multas e custos de recuperação do solo chegam a <b>${prejuizoEsperadoSSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}.</b>
+        
         `
+    div_mensagem2.innerHTML = //`Caso sua área de <b>${areaTotal} hectares</b> for atingida por um incêndio depois da safra, o prejuízo esperado (considerando multas e custos de recuperação do solo) chega a <b>${prejuizoEsperadoSSensorPos.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</b> baseado numa probabilidade de incêndio em <b>${probIncendioAjustada * 100}</b>%** da área.<br> 
+    
+    `
+    Em casos de incêndio <b>pós safra</b>, o prejuízo esperado chega a <b>${prejuizoEsperadoSSensorPos.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}.</b>
+    `
+    div_mensagem3.innerHTML = `Nossa solução garante redução de <b>50%*</b> do valor do prejuízo esperado, então com o nosso sensor IoT para monitoramento da umidade do solo, esse valor cai para cerca de <b>${prejuizoEsperadoCSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}.</b> <br>`
+    div_mensagem4.innerHTML = `
+    <h6>*Cálculos utilizam valores conservadores baseados em literatura técnica.</h6>
+    <h6>**A calculadora não contempla casos de incêndio em 100% da área do produtor.</h6> 
+    <h6>***Em caso do produtor inserir um lucro negativo (prejuízo), o valor do lucro será considerado 0 para não indicar economia em caso de incêndio.</h6>`
 
 
-<<<<<<< HEAD
-      div_mensagem2.innerHTML = `
-        Em casos de incêndio <b>pós safra</b>, o prejuízo esperado chega a <b>${prejuizoEsperadoSSensorPos.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}.</b>
-      `
-
-      div_mensagem3.innerHTML = `Nossa solução garante redução de <b>50%*</b> do valor do prejuízo esperado, então com o nosso sensor IoT para monitoramento da umidade do solo, esse valor cai para cerca de <b>${prejuizoEsperadoCSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}.</b> <br>`
-      div_mensagem4.innerHTML = `
-      <h6>*Cálculos utilizam valores conservadores baseados em literatura técnica.</h6>
-      <h6>**A calculadora não contempla casos de incêndio em 100% da área do produtor.</h6> 
-      <h6>***Em caso do produtor inserir um lucro negativo (prejuízo), o valor do lucro será considerado 0 para não indicar economia em caso de incêndio.</h6>`
-
-      if (TerraInd) {
-        div_msgTerraIndigena.innerHTML = "<i>Em áreas com presença de terras indígenas, as penalidades podem ser significativamente maiores que as estimadas pela calculadora, incluindo custos legais adicionais não contemplados neste modelo.</i> <br> <br>"
-      } else {
-        div_msgTerraIndigena.innerHTML = ""
-      }
-=======
     if (TerraInd) {
       div_msgTerraIndigena.style.display = "flex"
       div_msgTerraIndigena.innerHTML = "<i>Em áreas com presença de terras indígenas, as penalidades podem ser significativamente maiores que as estimadas pela calculadora, incluindo custos legais adicionais não contemplados neste modelo.</i> <br> <br>"
     } else {
       div_msgTerraIndigena.style.display = "none"
->>>>>>> 68083380e8061656678463b53ead799deb41a73f
     }
 
-    function imagemVolta() {
+
+  }
+
+function imagemVolta() {
       window.location.href = "homepage.html"
     }
 
