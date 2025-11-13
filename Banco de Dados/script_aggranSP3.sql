@@ -17,7 +17,7 @@ CREATE TABLE cadastroEmpresa (
 	bairro VARCHAR(40) NOT NULL,
     cidade VARCHAR(40) NOT NULL,
     uf CHAR(2) NOT NULL,
-    tamanhoTerreno DECIMAL,
+    tamanhoTerreno INT,
     dataCadastro DATETIME DEFAULT current_timestamp,
 	senha VARCHAR(255) NOT NULL,
     CONSTRAINT chktipoProducao CHECK(tipoProducao IN ('Lavoura', 'Pastagem', 'Perene'))
@@ -40,7 +40,9 @@ CREATE TABLE usuario (
     dataCadastro DATETIME DEFAULT current_timestamp,
     fk_cadastroEmpresa INT,
     fk_responsavel INT,
+    tipoUsuairo CHAR(8),
     CONSTRAINT chkCliente CHECK (statusCliente IN ('Ativo', 'Inativo')),
+	CONSTRAINT chk_usuario CHECK (tipoUsuairo IN ('Administrador', 'Funcionário')),
     CONSTRAINT fkcadastroUsuario FOREIGN KEY (fk_cadastroEmpresa) REFERENCES cadastroEmpresa(idCadastro),
     CONSTRAINT fkusuario_Responsavel FOREIGN KEY (fk_responsavel) REFERENCES usuario(idUsuario)
 );
@@ -72,6 +74,7 @@ CREATE TABLE sensor (
 	longitudeSensor DECIMAL (9,6),
     fkidCadastro INT,
     fkidloteSensor INT,
+    localHectar INT,
     CONSTRAINT fksensorCadastro FOREIGN KEY (fkidCadastro) REFERENCES cadastroEmpresa(idCadastro),
     CONSTRAINT fkloteSensor FOREIGN KEY (fkidloteSensor) REFERENCES loteSensor(idloteSensor)
 );
