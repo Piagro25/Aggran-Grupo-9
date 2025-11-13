@@ -863,6 +863,26 @@ e se finaliza o cadastro
     gap: 10px;
 }
 
+.umidade-media {
+    background-color: rgb(230, 0, 0);
+    background-size:auto;
+    width: fit-content;
+    padding: 4px;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.risco-queimada {
+    
+    background-color: rgb(230, 211, 0);
+    background-size:auto;
+    width: fit-content;
+    padding: 4px;
+    border-radius: 10px;
+    align-self: center;
+
+}
+
 /* gráficos */
 
 .container_dash {
