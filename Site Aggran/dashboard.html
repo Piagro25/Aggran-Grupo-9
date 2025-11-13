@@ -56,10 +56,10 @@
             <div>Quantidade de sensores abaixo do ideal:<p>3</p></div>
         </div>
         <div class="kpi">
-            <div>Risco de queimada:<p style="color: rgb(226, 233, 91);">Média ( 21.4% ) </p></div>
+            <div>Risco de queimada:<p class="risco-queimada">Média ( 21.4% ) </p></div>
         </div>
         <div class="kpi">
-            <div>Variação de umidade média (24 horas):<p style="color: rgb(255, 0, 0);">-3.5%</p></div>
+            <div>Variação de umidade média (24 horas):<p class="umidade-media">-3.5%</p></div>
         </div>
     </div>
 
@@ -148,7 +148,16 @@
             backgroundColor: "rgba(90, 174, 17, 0.655)",
             borderColor: "rgba(90, 174, 17, 0.655)",
             borderWidth: 1,
-          },
+          }
+          // }, {
+          //   label: "Limite de Umidade Máxima",
+          //   data: [null, null, 80, 80, 80, 80, 80],
+          //   backgroundColor: "rgba(90, 174, 17, 0.655)",
+          //   borderColor: "rgba(90, 174, 17, 0.655)",
+          //   borderWidth: 1,
+          //   borderdash: [5, 5],
+          //   tension: 0.1
+          // }
         ],
       },
       options: {
