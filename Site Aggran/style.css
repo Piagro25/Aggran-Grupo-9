@@ -16,13 +16,18 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100dvh;
+    height: 100%;
     background-color: #FFFAF1;
 }
 
 .header {
+    align-self: center;
+    width: 100%;
+    background-color: #FFFAF1;
+    position: sticky;
+    top: 0px;
     padding: 10px 0px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #006838;
 }
 
 .header, .header ul{
@@ -80,7 +85,7 @@ body {
 
 .header button {
     padding: 10px 15px;
-    border: 2px solid black;
+    border: 2px solid #006838;
     border-radius: 8px;
     background-color: transparent;
     transition: all 0.3s;
@@ -104,7 +109,7 @@ e se finaliza o header
 */
 .content-wrapper {
     width: 100%;
-    padding-top: 80px;
+    padding-top: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -448,13 +453,64 @@ e se finaliza o header
 }
 
 /* 
-Aqui inicia-se o login
+Aqui inicia-se a tecnologia
 e se finaliza o homepage
 */
 
+.conteudo-tech {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.conteudo-tech h1 {
+    color: #2E7D32;
+    font-family: Anton;
+    font-size: 38px;
+    font-weight: 400;
+    color:  #006838;
+    
+    display: flex; 
+    justify-self: flex-start;
+    align-self: center;
+    flex-direction: column;
+    margin-top: 90px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title p {
+    display: flex;
+    justify-self: center;
+    width: 300px;
+    text-align: center;
+    font-size: 16px;
+    
+}
+
+.informativos {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+}
+
+
+
+/* 
+Aqui inicia-se o login 
+e se finaliza a tecnologia */
+
 
 .container {
-    padding-top: 100px;
+    padding-top: 40px;
     margin: 0;
     display: flex;
     flex-direction: row;
@@ -941,4 +997,8 @@ e se finaliza o cadastro
     
 }
 
+/* SIDE NAVBAR */
 
+.sidebar {
+    display: flex;
+}
