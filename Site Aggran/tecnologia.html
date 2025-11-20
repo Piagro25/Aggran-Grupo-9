@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Tecnologia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css" />
-    <!-- <script src="main.js"></script> -->
   </head>
   <body>
     <div class="header">
@@ -43,41 +43,50 @@
         <a class="agora" href="login.html">Área do Cliente</a>
       </button>
     </div>
+    
+    <div class="conteudo-tech">
+        <div class="title">
+            <h1>CONHEÇA NOSSA TECNOLOGIA IOT</h1>
+            <p>Um sensor de umidade do solo, simples, eficiente, para reduzir riscos de queimadas no cerrado.</p>
+        </div>
 
-    <div class="login">
-      <div class="container">
-        <div>
-          <img
-            src="./Assets/bela-natureza-retro-com-campo.jpg"
-            class="img_login"
-          />
-        </div>
-        <div class="div_corpo_login">
-          <h1>Bem-vindo de volta!</h1>
-          <span>Acesse sua dashboard de monitoramento.</span>
-          <br />
-          <br />
-          <br />
-          <form class="form_inputs">
-            <div>
-              <p>Nome de usuário:</p>
-              <br />
-              <input type="text" id="input_user_login" />
+        <div class="informativos">
+            <div class="info">
+                <img src="./Assets/detector.png" alt="">
+                <p>O sensor mede a umidade do solo em tempo real</p>
             </div>
-            <div>
-              <p>Senha:</p>
-              <br />
-              <input type="password" id="input_senha_login" />
-              <span><a onclick="esqueci()" class="a_senha">Esqueci minha senha</a></span>
+            <div class="info">
+                <img src="./Assets/dash.png" alt="">
+                <p>Os dados são enviados para a sua dashboard</p>
             </div>
-          </form>
-          <br />
-          <button class="button_login" onclick="logar()">ENTRAR</button>
-          <br />
-          <span class="span_primeiroAcesso"
-            >Primeiro acesso? <a href="cadastro.html">Clique aqui!</a></span
-          >
+            <div class="info">
+                <img src="./Assets/queimada.png" alt="">
+                <p>Você pode antecipar condições críticas e evitar prejuízos</p>
+            </div>
         </div>
+
+        <div class="title sub-title">
+            <h1>EXPERIMENTE NOSSO PROTÓTIPO</h1>
+            <p>Nosso sensor IoT foi prototipado e testado utilizando componentes acessíveis e confiáveis.</p>
+        </div>
+
+        <div class="tinkercad">
+          <img src="./Assets/arduino.png" alt="">
+          <div>
+            <button onclick="avisar()">ABRIR NO TINKERCAD</button>
+          </div>
+        </div>
+    </div>
+
+    <div class="components">
+      <div>
+         <i class="fa-solid fa-arrow-right"></i>
+        <p><b>Arduino Uno R3</b> - Placa microcontroladora que gerencia leitura dos dados</p>
+      </div>
+
+      <div>
+        <i class="fa-solid fa-arrow-right"></i>
+        <p><b>Sensor de umidade XPTO</b> - Responsável por medir a umidade do solo em tempo real</p>
       </div>
     </div>
 
@@ -94,7 +103,7 @@
             <a href="">Quem Somos</a>
           </li>
           <li>
-            <a href="">Fale Conosco</a>
+            <a href=TECNOLOGIA"">Fale Conosco</a>
           </li>
           <li>
             <a href="cadastro.html">Primeiro Acesso</a>
@@ -126,32 +135,12 @@
       </div>
       <p>&copy; 2025 AGGRAN. Todos os direitos reservados</p>
     </div>
-  </body>
+</body>
 </html>
 <script>
 
-  var usuarioCriado = "a"; // 'Fernando.brandão@gmail.com'
-  var senhaCriada = "a"; //'sptech'
-
-  function esqueci() {
-
-    alert(`A sua senha é: ${senhaCriada}`)
-
+  function avisar() {
+    alert('Este modelo visual foi feito com I.A generativa para melhor compreensão, o software Tinkercad não possui o sensor de umidade de solo capacitivo.')
   }
-
-  function logar() {
-    
-
-    var usuario = input_user_login.value;
-    var senha = input_senha_login.value;
-
-    if (usuario == usuarioCriado && senha == senhaCriada) {
-      window.location.href = "dashboard.html";
-    } else if (usuario == usuarioCriado) {
-      alert(`Senha Incorreta`)
-    } else {
-      alert(`Usuário não encontrado`)
-    }
-  }
-
+  
 </script>

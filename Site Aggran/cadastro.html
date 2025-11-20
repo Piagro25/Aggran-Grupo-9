@@ -10,16 +10,20 @@
   <body>
     <div class="header">
       <div class="logo_wrapper">
-        <img
+        <a href="homepage.html"><img
           class="logo"
           width="105px"
           height="40px"
           src="./Assets/logo_header.png"
           alt=""
-          onclick="imagemVolta()"
-        />
-        <img class="logo" width="21.27px" height=39px"
-        src="./Assets/folha_header.png" alt="" onclick="imagemVolta()">
+        /></a>
+        <a href="homepage.html"><img
+          class="logo"
+          width="21.27px"
+          height="39px"
+          src="./Assets/folha_header.png"
+          alt=""
+        /></a>
       </div>
       <ul class="navbar">
         <li>
@@ -29,10 +33,7 @@
           <a href="tecnologia.html">Tecnologia</a>
         </li>
         <li>
-          <a href="">Quem somos</a>
-        </li>
-        <li>
-          <a href="">Fale Conosco</a>
+          <a href="contato.html">Fale Conosco</a>
         </li>
         <li class="agora">
           <a href="cadastro.html">Primeiro Acesso</a>
@@ -182,7 +183,7 @@
             <a href="">Quem Somos</a>
           </li>
           <li>
-            <a href="">Fale Conosco</a>
+            <a href="contato.html">Fale Conosco</a>
           </li>
           <li>
             <a href="cadastro.html">Primeiro Acesso</a>
@@ -217,10 +218,6 @@
   </body>
 </html>
 <script>
-
-  function imagemVolta() {
-    window.location.href = "homepage.html";
-  }
 
   function cadastrar_empresa() {
     div_empresa.style.display = "flex"

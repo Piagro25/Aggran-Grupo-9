@@ -10,6 +10,7 @@
    margin: 0;
    padding: 0;
    font-family: "Montserrat";
+   outline: 0;
 }
 
 body {
@@ -31,7 +32,7 @@ body {
    position: sticky;
    top: 0px;
    padding: 10px 0px;
-   border-bottom: 2px solid #006838;
+   border-bottom: 2px inset #006838;
    z-index: 1;
 }
 
@@ -67,12 +68,12 @@ body {
    left: 0%;
 }
 
-.header ul li:nth-of-type(4) {
-   border-right: 1.5px solid black;
+.header ul li:nth-of-type(3) {
+   border-right: 1.5px inset black;
    padding-right: 16px;
 }
 
-.header ul li:nth-of-type(5) {
+.header ul li:nth-of-type(4) {
    padding-left: 16px;
 }
 
@@ -91,7 +92,7 @@ body {
 
 .header button {
    padding: 10px 15px;
-   border: 2px solid #006838;
+   border: 2px inset #006838;
    border-radius: 8px;
    background-color: transparent;
    transition: all 0.3s;
@@ -99,7 +100,7 @@ body {
 
 .header button:hover {
    padding: 10px 15px;
-   border: 2px solid #006838;
+   border: 2px inset #006838;
    border-radius: 8px;
    background-color: #006838;
 }
@@ -303,8 +304,7 @@ e se finaliza o header
    height: 50px;
    background-color: #e9f4da;
    border-radius: 10px;
-   border-width: 4px;
-   border-color: #8cc342;
+   border: 2px inset #8cc342; 
    flex-direction: row wrap;
    padding-left: 10px;
    font-size: 15px;
@@ -313,7 +313,7 @@ e se finaliza o header
 #simulador .checkbox_group input {
    display: inline-block;
    padding: 5px;
-   border: 6px solid green;
+   border: 6px inset green;
    border-radius: 10px;
    margin-bottom: 15px;
 }
@@ -323,19 +323,11 @@ e se finaliza o header
 }
 
 #simulador .simulador_texto select {
-   /* font-size: 15px;
-    display: inline-block;
-    padding: 4px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 15px; */
-
    width: 200px;
    height: 50px;
    background-color: #e9f4da;
    border-radius: 10px;
-   border-width: 2px;
-   border-color: #8cc342;
+   border: 2px inset #8cc342;
    display: flex;
    flex-direction: row wrap;
    padding-left: 10px;
@@ -390,7 +382,7 @@ e se finaliza o header
 }
 
 .cliente_a {
-   border: 1px solid green;
+   border: 1px inset green;
    background-color: #e9f4da;
    border-radius: 10px;
    padding: 50px;
@@ -412,7 +404,7 @@ e se finaliza o header
 }
 
 .cliente_b {
-   border: 1px solid green;
+   border: 1px inset green;
    background-color: #e9f4da;
    border-radius: 10px;
    padding: 50px;
@@ -429,7 +421,7 @@ e se finaliza o header
 }
 
 .cliente_c {
-   border: 1px solid green;
+   border: 1px inset green;
    background-color: #e9f4da;
    border-radius: 10px;
    padding: 50px;
@@ -460,6 +452,7 @@ e se finaliza o homepage
    justify-content: center;
    align-items: center;
    flex-direction: column;
+   gap: 40px;
 }
 
 .conteudo-tech h1 {
@@ -473,7 +466,6 @@ e se finaliza o homepage
    justify-self: flex-start;
    align-self: center;
    flex-direction: column;
-   margin-top: 90px;
 }
 
 .title {
@@ -481,6 +473,8 @@ e se finaliza o homepage
    justify-content: center;
    align-items: center;
    flex-direction: column;
+
+   margin-top: 90px;
 }
 
 .title p {
@@ -494,12 +488,211 @@ e se finaliza o homepage
 .informativos {
    display: flex;
    justify-content: space-between;
-   flex-direction: row;
+   width: 100%;
+   padding: 40px 150px;
+   gap: 20px;
+   
+}
+
+.info {
+   display: flex;
+   padding: 10px 10px;
+   border-radius: 15px;
+   gap: 10px;
+;
+
+   box-shadow: 2px 2px 5px #2e7d32;
+   background-color: #e9f4da;
+   border: 2px inset #8CC342;
+
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+}
+
+.info img {
+   width: 75px;
+}
+
+.sub-title {
+   margin-top: 0;
+}
+
+.tinkercad {
+   display: flex;
+   flex-direction: column;
+   max-width: 65%;
+
+   justify-content: center;
+   align-items: center;
+   background-color: #006838;
+
+   border: 2px inset #006838;
+   border-radius: 15px;
+   overflow: hidden;
+
+}
+
+.tinkercad img {
+   width: 100%;
+}
+
+.tinkercad div {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 10px 0;
+
+}
+
+.tinkercad button {
+   width: 200px;
+   height: 50px;
+   font-size: 16px;
+   font-family: Anton;
+   color: #006838;
+   background-color: #fffaf1;
+   border: #006838;
+   border-radius: 10px;
+   justify-self: center;
+   align-self: center;
+   text-align: center;
+   transition: all 0.5s;
+   cursor: pointer;
+}
+
+.tinkercad button:hover {
+   scale: 1.1;
+}
+
+.components {
+   display: flex;
+   padding: 40px 150px 80px 150px;
+   width: 100%;
+   justify-content: space-between;
+}
+
+.components div {
+   display: flex;
+   gap: 10px;
 }
 
 /* 
+Aqui inicia-se o fale conosco
+e se finaliza o tecnologia 
+*/
+
+.conteudo-contact {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 50px 20px;
+   min-height: 600px;
+   gap: 10px;
+}
+
+.conteudo-contact h1 {
+   color: #2e7d32;
+   font-family: Anton;
+   font-size: 38px;
+   font-weight: 400;
+   color: #006838;
+
+   display: flex;
+   justify-self: flex-start;
+   flex-direction: column;
+}
+.conteudo-contact div {
+   width: 100%;
+}
+
+.informações-contato {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   padding: 5px 50px;
+}
+
+.informações-contato div p{
+   width: 80%;
+   flex-direction: column;
+   gap: 20px;
+   padding: 20px 0px;
+}
+
+.informações-contato ul {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   
+}
+
+.informações-contato ul li {
+   display: flex;
+   width: 100%;
+   background-color: #e9f4da;
+   border: 2px inset #8CC342;
+   border-radius: 15px;
+   padding: 10px 25px;
+   gap: 20px;
+
+}
+
+
+.formularios {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   padding: 40px;
+   border-radius: 15px;
+   border: 2px inset #2E7D32;
+}
+
+.formularios form {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   width: 100%;
+}
+
+.formularios form div {
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+}
+
+.formularios form div input, .formularios form div textarea {
+   padding: 10px;
+   border-radius: 10px;
+   border: 2px inset #8CC342;
+   background-color: #e9f4da;
+   resize: none;
+   outline: 0;
+}
+
+.formularios form button {
+   padding: 15px 50px;
+   font-size: 16px;
+   background-color: #2e7d32;
+   font-family: anton;
+   color: #FFFAF1;
+   border: 0;
+   border-radius: 10px;
+   align-self: center;
+   cursor: pointer;
+   transition: all 0.3s;
+}
+
+.formularios form button:hover {
+   scale: 1.1;
+}
+
+
+
+/* 
 Aqui inicia-se o login 
-e se finaliza a tecnologia */
+e se finaliza a fale conosco*/
 
 .container {
    padding-top: 40px;
@@ -668,10 +861,10 @@ e se finaliza o login
    color: #006838;
 
    display: flex;
-   justify-self: flex-start;
+   justify-self: center;
    align-self: center;
    flex-direction: column;
-   margin: 30px 320px 45px 0;
+   margin: 40px
 }
 
 .botões_tipo_cadastro {
@@ -721,8 +914,7 @@ e se finaliza o login
    height: 50px;
    background-color: #e9f4da;
    border-radius: 10px;
-   border-width: 2px;
-   border-color: #8cc342;
+   border: 2px inset #8cc342;
    display: flex;
    flex-direction: row wrap;
    padding-left: 10px;
@@ -784,7 +976,7 @@ e se finaliza o cadastro
    display: flex;
    width: 100%;
    height: 85%;
-   border-bottom: 2px solid white;
+   border-bottom: 2px inset white;
    justify-content: space-between;
    align-self: flex;
    /* padding-bottom: 20px; */
@@ -1025,7 +1217,7 @@ e se finaliza o cadastro
     
 }
 
-.sidebar .navbar ul li p i.fa-solid.fa-chevron-up  {
+.sidebar .navbar ul li p i.fa-groove.fa-chevron-up  {
     opacity: 0;
     
 }
@@ -1035,11 +1227,11 @@ e se finaliza o cadastro
     background-color: rgba(255, 255, 255, 0.1);  
 }
 
-.sidebar .navbar ul li:hover p i.fa-solid.fa-chevron-down {
+.sidebar .navbar ul li:hover p i.fa-groove.fa-chevron-down {
     opacity: 0;
 }
 
-.sidebar .navbar ul li:hover p i.fa-solid.fa-chevron-up {
+.sidebar .navbar ul li:hover p i.fa-groove.fa-chevron-up {
     opacity: 1;
 }
 
@@ -1056,7 +1248,7 @@ e se finaliza o cadastro
 }
 
 .sidebar .navbar ul li:hover p {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px inset rgba(255, 255, 255, 0.1);
 }
 
 .sidebar .navbar ul li:hover span{ 

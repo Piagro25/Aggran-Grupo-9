@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Tecnologia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css" />
-    <!-- <script src="main.js"></script> -->
   </head>
   <body>
     <div class="header">
@@ -44,40 +52,48 @@
       </button>
     </div>
 
-    <div class="login">
-      <div class="container">
+    <div class="conteudo-contact">
+      <div class="informações-contato">
         <div>
-          <img
-            src="./Assets/bela-natureza-retro-com-campo.jpg"
-            class="img_login"
-          />
+          <h1>ENTRE EM CONTATO CONOSCO</h1>
+          <p>Do esclarecimento técnico ao orçamento do seu projeto, estamos aqui para apoiar você.</p>
         </div>
-        <div class="div_corpo_login">
-          <h1>Bem-vindo de volta!</h1>
-          <span>Acesse sua dashboard de monitoramento.</span>
-          <br />
-          <br />
-          <br />
-          <form class="form_inputs">
-            <div>
-              <p>Nome de usuário:</p>
-              <br />
-              <input type="text" id="input_user_login" />
-            </div>
-            <div>
-              <p>Senha:</p>
-              <br />
-              <input type="password" id="input_senha_login" />
-              <span><a onclick="esqueci()" class="a_senha">Esqueci minha senha</a></span>
-            </div>
-          </form>
-          <br />
-          <button class="button_login" onclick="logar()">ENTRAR</button>
-          <br />
-          <span class="span_primeiroAcesso"
-            >Primeiro acesso? <a href="cadastro.html">Clique aqui!</a></span
-          >
-        </div>
+        <ul>
+          <li>
+            <img src="./Assets/proposta_contato.svg" alt="">
+            <p>Solicite uma proposta personalizada para seu projeto</p>
+          </li>
+          <li>
+            <img src="./Assets/dúvida_contato.svg" alt="">
+            <p>Pergunte mais sobre nossa tecnologia e como aplicá-la.</p>
+          </li>
+          <li>
+            <img src="./Assets/suporte_contato.svg" alt="">
+            <p>Conte com nossa equipe para suporte técnico rápido.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="formularios">
+        <form action="">
+          <div>
+            <label for="input_nome">Nome Completo</label>
+            <input type="text" id="input_nome">
+          </div>
+
+          <div>
+            <label for="input_email">E-mail</label>
+            <input type="text" id="input_email">
+          </div>
+            
+          <div>
+            <label for="input_msg">Mensagem</label>
+            <textarea rows="8" id="input_msg"></textarea>
+          </div>
+
+          <button class="button_contact" onclick="enviar()">ENVIAR</button>
+
+        </form>
       </div>
     </div>
 
@@ -94,7 +110,7 @@
             <a href="">Quem Somos</a>
           </li>
           <li>
-            <a href="">Fale Conosco</a>
+            <a href=TECNOLOGIA"">Fale Conosco</a>
           </li>
           <li>
             <a href="cadastro.html">Primeiro Acesso</a>
@@ -126,32 +142,22 @@
       </div>
       <p>&copy; 2025 AGGRAN. Todos os direitos reservados</p>
     </div>
-  </body>
+    
+</body>
 </html>
 <script>
 
-  var usuarioCriado = "a"; // 'Fernando.brandão@gmail.com'
-  var senhaCriada = "a"; //'sptech'
+  function enviar() {
+    var nome = (input_nome.value);
+    var email = (input_email.value);
+    var mensagem = (input_msg.value);
 
-  function esqueci() {
-
-    alert(`A sua senha é: ${senhaCriada}`)
-
-  }
-
-  function logar() {
-    
-
-    var usuario = input_user_login.value;
-    var senha = input_senha_login.value;
-
-    if (usuario == usuarioCriado && senha == senhaCriada) {
-      window.location.href = "dashboard.html";
-    } else if (usuario == usuarioCriado) {
-      alert(`Senha Incorreta`)
+    if (nome == '' || email == '' || mensagem == '' ) {
+      alert('Informações pendentes no formulário.')
     } else {
-      alert(`Usuário não encontrado`)
+      alert('Formulário enviado com sucesso!')
     }
+    
   }
 
 </script>
