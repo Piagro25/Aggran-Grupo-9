@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>homepage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="header">
+    <div class="logo_wrapper">
+      <a href="homepage.html"><img
+          class="logo"
+          width="105px"
+          height="40px"
+          src="./Assets/logo_header.png"
+          alt=""
+        /></a>
+        <a href="homepage.html"><img
+          class="logo"
+          width="21.27px"
+          height="39px"
+          src="./Assets/folha_header.png"
+          alt=""
+        /></a>
+    </div>
+    <ul class="navbar">
+      <li class="agora">
+        <a href="homepage.html">Home</a>
+      </li>
+      <li>
+        <a href="tecnologia.html">Tecnologia</a>
+      </li>
+      <li>
+        <a href="contato.html">Fale Conosco</a>
+      </li>
+      <li>
+        <a href="cadastro.html">Primeiro Acesso</a>
+      </li>
+    </ul>
+    <button>
+      <a href="login.html">Área do Cliente</a>
+    </button>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="hero_content">
+      <img src="./Assets/Cuidar_do_solo.png" style="border-radius: 15px;">
+
+      <div class="main_text">
+        <h2>CUIDAR DO SOLO É CUIDAR DO FUTURO <a target="_blank" href="https://youtu.be/dQw4w9WgXcQ?si=_T39SVePDrDaFr0D"><img class="logo" width="21.27px" height="39px"
+            src="./Assets/folha_header.png" alt=""></a></h2>
+        <p>
+          <!-- Nosso sensor IoT ajuda pequenos e médios produtores a agir antes que o fogo se espalhe, reduzindo
+          riscos
+          de queimadas, evitando multas e preservando a produtividade da terra. -->
+
+          Com nosso sensor IoT, ajudamos a sua produção a se manter segura, gerando dashboards de visualização para que ações sejam tomadas antes que o fogo se espalhe, reduzindo os riscos de queimadas, evitando multas e preservando a qualidade de seu solo.
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Simulação -->
+
+  <div id="simulador">
+    <div class="simulador_texto">
+      <h2>DESCUBRA COMO REDUZIR SEUS GASTOS COM PREVENÇÃO INTELIGENTE</h2>
+      <p id="p_texto">
+        A calculadora utiliza dados médios de lucros por hectare, custos de recuperação do solo e valores de
+        multas previstos em lei para áreas agrícolas e de vegetação nativa. A partir das informações que
+        você
+        insere (tipo de produção, área e lucro mensal), simulamos os prejuízos em caso de queimadas e
+        comparamos
+        com o cenário de uso do sensor IoT. Assim, você visualiza o quanto pode economizar, tanto evitando
+        perdas de produção quanto reduzindo riscos de penalidades.
+      </p>
+    </div>
+
+    <div class="simulador_form">
+      <div class="simulador_texto" id="simulador_texto">
+
+        <h1>Calcule sua economia utilizando nossa solução</h1>
+        <div class="inputs">
+          <form onsubmit="submitado(event)">
+          <div>
+           <p>Selecione seu tipo de produção:</p>
+           <select id="select_producao" required>
+              <option value="" selected disabled>Selecione...</option>
+              <option>Lavoura</option>
+              <option>Pastagem</option>
+              <option>Perene</option>
+            </select>
+            <!-- <span id="aviso" class="aviso"> Por favor, selecione seu tipo de produção!</span> -->
+          </div>
+
+          <div>
+            <p>Insira a área total da sua propriedade (em hectares):</p>
+            <input type="number" min="1" id="input_areaTotal" required>
+            <!-- <span id="aviso2" class="aviso">Por favor, insira sua área total de propriedade!</span> -->
+          </div>
+
+          <div>
+            <p>Insira seu custo de investimento médio por safra (por hectare):</p>
+            <input type="number" min="0" id="input_investimento" required>
+            <!-- <span id="aviso3" class="aviso"> Por favor, insira seu custo de investimento!</span> -->
+          </div>
+
+          <div>
+            <p>Insira seu lucro líquido mensal (por hectare):</p>
+            <input type="number" id="input_lucroMensal" required>
+            <!-- <span id="aviso4" class="aviso"> Por favor, insira seu lucro líquido mensal!</span> -->
+          </div>
+
+          <br>
+          
+          <div class="checkbox">
+          <input type="checkbox" id="input_TecPrevent"> <i>Já utiliza técnica de prevenção</i> <br>
+          <input type="checkbox" id="input_VegNativa"> <i>Vegetacão nativa presente</i> <br>
+          <input type="checkbox" id="input_TerraInd"> <i>Proximidade com terras indígenas</i> <br>
+          </div>
+          <br>
+          
+        </div>
+        
+        <div>
+          <button type="submit" onclick="calcular_economia()" >Calcule sua economia!</button><BR>
+          </div>
+          
+          
+          
+        </form>
+      </div>
+
+      <div class="mensagens" id="div_mensagens" style="display: none;">
+        <span class="titulo_mensagem">Meio safra</span>
+        <div id="div_mensagem1"></div>
+          <br>
+        <span class="titulo_mensagem">Pós safra</span>
+        <div id="div_mensagem2"></div>
+          <br>
+        <span class="titulo_mensagem">Resultados</span>
+        <div id="div_mensagem3"></div>
+          <br>
+        <div id="div_msgTerraIndigena" class="indio" style="display: none;"></div> 
+          <br>
+        <div id="div_mensagem4"></div>
+
+        <button onclick="voltar()">Voltar</button>
+      </div>
+      
+    </div>
+  </div>
+
+
+  <!-- Depoimentos -->
+
+  <div id="depoimentos">
+    <div class="container">
+      <h2>Prevenção que gera <br>confiança e economia </h2>
+      <p>Cada experiência é uma prova do<br>impacto positivo da tecnologia.</p>
+    </div>
+
+    <div class="depoimentos_container">
+      <div class="cliente_a">
+        <img src="./Assets/foto_cliente.jpg" alt="foto_cliente" width="60px" height="60px" style="border-radius: 100px;">
+        <h3>José Farias</h3>
+        <span>4.5</span>
+         <img src="./Assets/estrela2_cliente.png" alt="estrela" width="30px" height="30px" style="border-radius: 100px; margin-bottom: 10px;">
+        <p>
+          “Com o sensor de umidade, consegui monitorar melhor minhas áreas de cultivo e agir antes que
+          qualquer foco de incêndio se espalhasse. Isso me trouxe tranquilidade e reduziu muito os riscos
+          na
+          produção.”
+        </p>
+      </div>
+
+      <div class="cliente_b">
+        <img src="./Assets/foto_cliente.jpg" alt="foto_cliente" width="60px" height="60px" style="border-radius: 100px;">
+        <h3>Calebe Pereira</h3>
+        <span>4.5</span>
+         <img src="./Assets/estrela2_cliente.png" alt="estrela" width="30px" height="30px" style="border-radius: 100px; margin-bottom: 10px;">
+        <p>
+          “Antes eu não tinha noção real do prejuízo que um incêndio poderia causar. A calculadora e o
+          sensor
+          mostraram claramente os custos de recuperação e das multas. Hoje enxergo o investimento como
+          essencial.”
+        </p>
+      </div>
+
+      <div class="cliente_c">
+        <img src="./Assets/foto_cliente.jpg" alt="foto_cliente" width="60px" height="60px" style="border-radius: 100px;">
+        <h3>Marcos Antônio</h3>
+        <span>4.5</span>
+        <img src="./Assets/estrela2_cliente.png" alt="estrela" width="30px" height="30px" style="border-radius: 100px; margin-bottom: 10px;">
+        <p>
+          “A instalação foi simples e os dados são fáceis de acompanhar. Para mim, o maior benefício é
+          saber
+          que estou prevenindo perdas e evitando problemas legais, enquanto garanto mais produtividade no
+          campo.”
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="footer">
+      <div class="footer_wrapper">
+        <ul>
+          <li>
+            <a href="homepage.html">Home</a>
+          </li>
+          <li>
+            <a href="">Tecnologia</a>
+          </li>
+          <li>
+            <a href="">Quem Somos</a>
+          </li>
+          <li>
+            <a href="contato.html">Fale Conosco</a>
+          </li>
+          <li>
+            <a href="cadastro.html">Primeiro Acesso</a>
+          </li>
+          <li>
+            <a href="login.html">Área do Cliente</a>
+          </li>
+          <li>
+            <a href="">Política de Privacidade</a>
+          </li>
+          <li>
+            <a href="">Aviso Legal</a>
+          </li>
+        </ul>
+        <div class="footer_logo_wrapper">
+          <img
+            width="32px"
+            height="60px"
+            src="./Assets/folha_footer.png"
+            alt=""
+          />
+          <img
+            width="250px"
+            height="90px"
+            src="./Assets/logo_footer.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <p>&copy; 2025 AGGRAN. Todos os direitos reservados</p>
+    </div>
+</body>
+</html>
+
+<script>
+
+  function voltar() {
+    simulador_texto.style.display = "flex";
+    div_mensagens.style.display = "none";
+
+  }
+
+  function submitado(event) {
+    event.preventDefault()
+  }
+
+  //Código HTML e JS desenvolvidos por Aurora Carvalho.
+  //Código aprimorado e revisado por Grupo 9 - Aggran.
+  //Variáveis Globais
+
+  //Valores das multas
+  var multasAgro = 3000
+  var multasNativa = 10000
+
+  //Custos de recuperação de solo total por hectare
+  var custo_lavoura = 800
+  var custo_pastagem = 4400
+  var custo_perene = 6000
+  var custo_nativa = 17000
+
+  //Custos de prejuizo
+  var prejuizoNativa = 0
+
+  //Calculos de prejuizo Meio de safra
+  var prejuizoProdMeio = 0
+  var prejuizoBrutoTotalMeio = 0
+  var prejuizoEsperadoSSensorMeio = 0
+  var prejuizoEsperadoCSensorMeio = 0
+
+  //Calculos de prejuizo Pos safra
+  var prejuizoProdPos = 0
+  var prejuizoBrutoTotalPos = 0
+  var prejuizoEsperadoSSensorPos = 0
+  var prejuizoEsperadoCSensorPos = 0
+
+  //Calculo de economia
+  var economiaTotal = 0
+
+  //Meses de recuperação (consequentemente sem produção)
+  var mesesRecuperacao = 0
+
+  function calcular_economia() {
+
+    
+
+    //Validação de entradas: o preenchimento de todos os campos é obrigatório, senão uma mensagem de erro é exibida e o programa retorna ao início
+    var erro = false
+
+    if (select_producao.value === "") {
+      // aviso.style.display = "inline"
+      erro = true
+    } else {
+      // aviso.style.display = "none"
+    }
+
+    if (input_areaTotal.value === "") {
+      // aviso2.style.display = "inline"
+      erro = true
+    } else {
+      // aviso2.style.display = "none"
+    }
+    if (input_investimento.value === "") {
+      // aviso3.style.display = "inline"
+      erro = true
+    } else {
+      // aviso3.style.display = "none"
+    }
+
+    if (input_lucroMensal.value === "") {
+      // aviso4.style.display = "inline"
+      erro = true;
+    } else {
+      // aviso4.style.display = "none"
+    }
+
+    if (!erro) {
+      simulador_texto.style.display = "none";
+      div_mensagens.style.display = "block";
+    }
+
+    if (erro) {
+      return
+    }
+    
+
+
+    var tipoProd = select_producao.value.toLowerCase()
+    var areaTotal = Number(input_areaTotal.value)
+    var investimento = Number(input_investimento.value)
+    var lucroMensal = Number(input_lucroMensal.value)
+    var tecPrevent = input_TecPrevent.checked
+    var vegNativa = input_VegNativa.checked
+    var TerraInd = input_TerraInd.checked
+
+
+    //Excluindo a possibilidade da calculadora considerar uma economia em caso de incêndio caso o produtor insira lucro negativo (prejuízo)
+    if (lucroMensal < 0) {
+      lucroMensal = 0
+    }
+
+    // Definição de probabilidade de incendio de acordo com o tam do produtor
+    if (areaTotal <= 200) {
+      var probIncendioBase = 15
+
+    } else {
+      probIncendioBase = 20
+    }
+
+    // Se usar tecnicas de prevenção, o risco reduz em 30%
+    if (tecPrevent) {
+      var probIncendioAjustada = probIncendioBase - (probIncendioBase * 0.3)
+    } else {
+      probIncendioAjustada = probIncendioBase
+    }
+
+    //Definição de área nativa x área produtiva
+    var areaNativa = 0;
+    var areaProd = areaTotal
+
+    if (vegNativa) {
+      areaNativa = areaTotal * 0.2
+      areaProd = areaTotal - areaNativa
+    }
+
+    //Definição dos prejuizos baseados no tipo de produção e se a checkbox "Nativa" foi marcada
+    var custoRecuperacao = 0
+
+    if (tipoProd == "lavoura") {
+      custoRecuperacao = custo_lavoura
+      mesesRecuperacao = 4
+    }
+    if (tipoProd == "pastagem") {
+      custoRecuperacao = custo_pastagem
+      mesesRecuperacao = 6
+    }
+    if (tipoProd == "perene") {
+      custoRecuperacao = custo_perene
+      mesesRecuperacao = 8
+    }
+
+    var investMeioSafra = investimento * 0.5
+    var investPosSafra = investimento * 0.1
+
+
+    prejuizoProd_meioSafra = (lucroMensal * mesesRecuperacao) + custoRecuperacao + multasAgro + investMeioSafra
+    prejuizoProd_posSafra = (lucroMensal * mesesRecuperacao) + custoRecuperacao + multasAgro + investPosSafra
+
+
+
+    if (vegNativa) {
+      //O valor de lucro da vegetação nativa é 0 pois não há cultivo ou criação
+      prejuizoNativa = custo_nativa + multasNativa
+    } else { prejuizoNativa = 0 }
+
+    //Prejuízo bruto total (multiplicando pela quantidade de hectares)
+    prejuizoBrutoTotalMeio = (prejuizoProd_meioSafra * areaProd) + (prejuizoNativa * areaNativa)
+    prejuizoBrutoTotalPos = (prejuizoProd_posSafra * areaProd) + (prejuizoNativa * areaNativa)
+
+    //Prejuízo esperado sem o uso do sensor
+    prejuizoEsperadoSSensorMeio = prejuizoBrutoTotalMeio * probIncendioAjustada
+    prejuizoEsperadoSSensorPos = prejuizoBrutoTotalPos * probIncendioAjustada
+
+    //Prejuízo esperado com o uso do sensor 
+    // 50% de economia é um valor conservador baseado em literaturas técnicas de dispositivos tecnológicos de prevenção
+    prejuizoEsperadoCSensorMeio = prejuizoEsperadoSSensorMeio * 0.5
+    prejuizoEsperadoCSensorPos = prejuizoEsperadoSSensorPos * 0.5
+
+    //Economia total com o uso do sensor 
+    economiaTotalMeio = prejuizoEsperadoSSensorMeio - prejuizoEsperadoCSensorMeio
+    economiaTotalPos = prejuizoEsperadoSSensorPos - prejuizoEsperadoCSensorPos
+
+
+    div_mensagem1.innerHTML = `Com uma área de <b>${areaTotal} hectares</b> e baseando-se a uma probabilidade de incêndio de <b>${probIncendioAjustada.toFixed(2)}%*</b> o prejuizo esperado em caso de incêndio em <b>meio a safra</b> ao considerar multas e custos de recuperação do solo chegam a <b>${prejuizoEsperadoSSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}.</b>
+        
+        `
+    div_mensagem2.innerHTML = //`Caso sua área de <b>${areaTotal} hectares</b> for atingida por um incêndio depois da safra, o prejuízo esperado (considerando multas e custos de recuperação do solo) chega a <b>${prejuizoEsperadoSSensorPos.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</b> baseado numa probabilidade de incêndio em <b>${probIncendioAjustada * 100}</b>%** da área.<br> 
+    
+    `
+    Em casos de incêndio <b>pós safra</b>, o prejuízo esperado chega a <b>${prejuizoEsperadoSSensorPos.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}.</b>
+    `
+    div_mensagem3.innerHTML = `Nossa solução garante redução de <b>50%*</b> do valor do prejuízo esperado, então com o nosso sensor IoT para monitoramento da umidade do solo, esse valor cai para cerca de <b>${prejuizoEsperadoCSensorMeio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}.</b> <br>`
+    div_mensagem4.innerHTML = `
+    <h6>*Cálculos utilizam valores conservadores baseados em literatura técnica.</h6>
+    <h6>**A calculadora não contempla casos de incêndio em 100% da área do produtor.</h6> 
+    <h6>***Em caso do produtor inserir um lucro negativo (prejuízo), o valor do lucro será considerado 0 para não indicar economia em caso de incêndio.</h6>`
+
+
+    if (TerraInd) {
+      div_msgTerraIndigena.style.display = "flex"
+      div_msgTerraIndigena.innerHTML = "<i>Em áreas com presença de terras indígenas, as penalidades podem ser significativamente maiores que as estimadas pela calculadora, incluindo custos legais adicionais não contemplados neste modelo.</i> <br> <br>"
+    } else {
+      div_msgTerraIndigena.style.display = "none"
+    }
+
+
+  }
+</script>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Cadastro</title>
+
+  <script src="./js/sessao.js"></script>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+</head>
+
+<body>
+    <div class="header">
+      <div class="logo_wrapper">
+        <a href="homepage.html"><img
+          class="logo"
+          width="105px"
+          height="40px"
+          src="./Assets/logo_header.png"
+          alt=""
+        /></a>
+        <a href="homepage.html"><img
+          class="logo"
+          width="21.27px"
+          height="39px"
+          src="./Assets/folha_header.png"
+          alt=""
+        /></a>
+      </div>
+      <ul class="navbar">
+        <li>
+          <a href="homepage.html">Home</a>
+        </li>
+        <li>
+          <a href="tecnologia.html">Tecnologia</a>
+        </li>
+        <li>
+          <a href="contato.html">Fale Conosco</a>
+        </li>
+        <li class="agora">
+          <a href="cadastro.html">Primeiro Acesso</a>
+        </li>
+      </ul>
+      <button>
+        <a href="login.html">Área do Cliente</a>
+      </button>
+    </div>
+
+    <div class="Conteudo">
+      <h1>Primeiro Acesso</h1>
+      <div class="botões_tipo_cadastro" id="div_botão">
+          <button class="button_cadastro" onclick="cadastrar_empresa()">CADASTRAR EMPRESA</button>
+          <button class="button_cadastro" onclick="cadastrar_funcionario()">CADASTRAR FUNCIONÁRIO</button>
+      </div>
+      </div>
+
+
+      <div class="formulario" id="div_empresa" style="display: none;">
+        <div class="config">
+          <form action="">
+            <div>
+              <p>Nome de usuário*</p>
+              <input type="text" id="user_empresa_input" placeholder="Fernando Brandão"/>
+            </div>
+            <div>
+              <p>Nome da empresa*</p>
+              <input type="text" id="nome_empresa_input" placeholder="SPTech"  />
+            </div>
+            <div>
+              <p>CNPJ*</p>
+              <input type="text" id="cnpj_input" placeholder="05.312.647/0001-72" />
+            </div>
+            <div>
+              <p>Email*</p>
+              <input type="text" id="email_empresa_input" placeholder="fernando.brandão@gmail.com" />
+            </div>
+            <div>
+              <p>Telefone*</p>
+              <input type="text" id="telefone_empresa_input" placeholder="11 3589-4043" />
+            </div>
+            <div>
+              <p>Tipo de produção*</p>
+              <select class="select_produção" id="tipo_produçao_input">
+                <option>Lavoura</option>
+                <option>Pastagem</option>
+                <option>Perene</option>
+              </select>
+            </div>
+            <div>
+              <p>CEP*</p>
+              <input type="text" id="cep_input" placeholder="01414-001" />
+            </div>
+            <div>
+              <p>Logradouro*</p>
+              <input type="text" id="logradouro_input" placeholder="Rua Haddock Lobo" />
+            </div>
+            <div>
+              <p>Número*</p>
+              <input type="number" id="numero_input" placeholder="595" />
+            </div>
+            <div>
+              <p>Complemento*</p>
+              <input type="text" id="complemento_input" placeholder="Lado ímpar" />
+            </div>
+            <div>
+              <p>Bairro</p>
+              <input type="text" id="bairro_input" placeholder="Cerqueira César" />
+            </div>
+            <div>
+              <p>Cidade*</p>
+              <input type="text" id="cidade_input" placeholder="São Paulo" />
+            </div>
+            <div>
+              <p>UF*</p>
+              <input type="text" id="UF_input" placeholder="SP" />
+            </div>
+            <div>
+              <p>Tamanho do terreno* (m²)</p>
+              <input type="text" id="tamanhoTerreno_input" placeholder="1.000.000" />
+            </div>
+            <div>
+              <p>Crie sua senha*</p>
+              <input type="text" id="senha_input" placeholder="sptech@1234" />
+            </div>
+            <div>
+              <p>Confirme a sua senha*</p>
+              <input
+                type="text"
+                id="input_senha_confirmada"
+                placeholder="sptech@1234"
+              />
+            </div>
+          </form>
+        </div>
+        <button class="button_cadastro" onclick="cadastrar()">ENVIAR</button>
+      </div>
+      <div id="mensagem_erro"></div>
+    </div>
+
+    <div class="formulario" id="div_funcionario" style="display: none;">
+        <div class="config">
+          <form action="">
+            <div>
+              <p>Código de acesso*</p>
+              <input type="text" id="codigo_input" placeholder="608542" />
+            </div>
+            <div>
+              <p>Nome de usuário*</p>
+              <input type="text" id="user_usuario_input" placeholder="João de Paula" />
+            </div>
+            <div>
+              <p>CPF*</p>
+              <input type="text" id="CPF_input" placeholder="523.819.414-09" />
+            </div>
+            <div>
+              <p>Email*</p>
+              <input type="text" id="email_usuario_input" placeholder="joãodepaula@gmail.com" />
+            </div>
+            <div>
+              <p>Crie sua senha*</p>
+              <input type="text" id="senha_usuario_input" placeholder="ficaadica06" />
+            </div>
+            <div>
+              <p>Confirme a sua senha*</p>
+              <input type="text" id="confirmacao_senha_input" placeholder="ficaadica06"/>
+            </div>
+          </form>
+        <button class="button_cadastro" onclick="cadastrar1()">ENVIAR</button>
+      </div>
+      <div id="mensagem_erro"></div>
+    </div>
+
+    <div class="footer">
+      <div class="footer_wrapper">
+        <ul>
+          <li>
+            <a href="homepage.html">Home</a>
+          </li>
+          <li>
+            <a href="">Tecnologia</a>
+          </li>
+          <li>
+            <a href="">Quem Somos</a>
+          </li>
+          <li>
+            <a href="contato.html">Fale Conosco</a>
+          </li>
+          <li>
+            <a href="cadastro.html">Primeiro Acesso</a>
+          </li>
+          <li>
+            <a href="login.html">Área do Cliente</a>
+          </li>
+          <li>
+            <a href="">Política de Privacidade</a>
+          </li>
+          <li>
+            <a href="">Aviso Legal</a>
+          </li>
+        </ul>
+        <div class="footer_logo_wrapper">
+          <img
+            width="32px"
+            height="60px"
+            src="./Assets/folha_footer.png"
+            alt=""
+          />
+          <img
+            width="250px"
+            height="90px"
+            src="./Assets/logo_footer.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <p>&copy; 2025 AGGRAN. Todos os direitos reservados</p>
+    </div>
+  </body>
+
+</html>
+
+<script>
+  function cadastrar_empresa() {
+    div_empresa.style.display = "flex"
+    div_botão.style.display = "none"
+  }
+
+  function cadastrar_funcionario() {
+    div_funcionario.style.display = "flex"
+    div_botão.style.display = "none"
+  }
+
+
+  function cadastrar() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = user_empresa_input.value;
+    var emailVar = email_empresa_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var codigoVar = codigo_input.value;
+    var tamanhoTerrenoVar = tamanhoTerreno_input.value;
+    var ufVar = UF_input.value;
+    var cidadeVar = cidade_input.value;
+    var bairroVar = bairro_input.value;
+    var complementoVar = complemento_input.value;
+    var numeroVar = numero_input.value;
+    var logradouroVar = logradouro_input.value;
+    var cepVar = cep_input.value;
+    var tipoProduçãoVar = tipo_produçao_input.value;
+    var telefoneVar = telefone_empresa_input.value;
+    var cnpjVar = cnpj_input.value;
+    var nomeEmpresaVar = nome_empresa_input.value;
+
+    // Verificando se há algum campo em branco
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      codigoVar == ""||
+      tamanhoTerrenoVar == ""||
+      ufVar == ""||
+      cidadeVar == ""||
+      bairroVar == ""||
+      complementoVar == ""||
+      numeroVar == ""||
+      logradouroVar == ""||
+      cepVar == ""||
+      tipoProduçãoVar == ""||
+      telefoneVar == "" ||
+      cnpjVar == "" ||
+      nomeEmpresaVar == ""
+    ) {
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+     } 
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        confirmacaoSenhaServer: confirmacaoSenhaVar,
+        codigoServer: codigoVar,
+        tamanhoTerrenoServer: tamanhoTerrenoVar,
+        ufServer: ufVar,
+        cidadeServer: cidadeVar,
+        bairroServer: bairroVar,
+        complementoServer: complementoVar,
+        numeroServer: numeroVar,
+        logradouroServer: logradouroVar,
+        cepServer: cepVar,
+        tipoProducaoServer: tipoProduçãoVar,
+        telefoneServer: telefoneVar,
+        cnpjServer: cnpjVar,
+        nomeEmpresaServer: nomeEmpresaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
+  }
+  function cadastrar1() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = user_usuario_input.value;
+    var emailVar = email_usuario_input.value;
+    var senhaVar = senha_usuario_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var codigoVar = codigo_input.value;
+
+    // Verificando se há algum campo em branco
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      codigoVar == ""
+    ) {
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+     } 
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar1", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        confirmacaoSenhaServer: confirmacaoSenhaVar,
+        codigoServer: codigoVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
+  }
+</script>
