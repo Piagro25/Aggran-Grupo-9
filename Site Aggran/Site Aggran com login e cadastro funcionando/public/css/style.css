@@ -855,8 +855,31 @@ e se finaliza o login
    display: flex;
    justify-self: center;
    align-self: center;
-   flex-direction: column;
    margin: 40px
+}
+
+.Conteudo-header {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   width: 400px;
+}
+.Conteudo-header span{
+   display: none;
+   position: absolute;
+   top: 19%;
+   left: 30%;
+   align-self: center;
+   justify-content: start;
+   font-size: 35px;
+   color: #006838;
+   cursor: pointer;
+   transition: all 0.3s;
+}
+
+.Conteudo-header span:hover {
+   scale: 1.1;
 }
 
 .botões_tipo_cadastro {
@@ -882,12 +905,26 @@ e se finaliza o login
    transition: all 0.5s;
 }
 
-.empresa {
-   width: 250px;
-   height: 350px;
+.button_cadastro span {
+   font-size: 90px;
 }
 
+.empresa {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 40px;
+   width: 250px;
+   height: 350px;
+} 
+
 .funcionario {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 40px;
    width: 250px;
    height: 350px;
 }

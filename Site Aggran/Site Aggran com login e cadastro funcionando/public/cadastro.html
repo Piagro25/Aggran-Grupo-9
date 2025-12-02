@@ -11,6 +11,7 @@
   <script src="./js/sessao.js"></script>
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 
 <body>
@@ -51,10 +52,17 @@
     </div>
 
     <div class="Conteudo">
-      <h1>Primeiro Acesso</h1>
+      <div class="Conteudo-header">
+        <span id="span_voltar" class="material-symbols-outlined" onclick="voltar()">keyboard_backspace</span>
+        <h1>Primeiro Acesso</h1>  
+      </div>
       <div class="botões_tipo_cadastro" id="div_botão">
-          <button class="button_cadastro empresa" onclick="cadastrar_empresa()"><span></span>CADASTRAR EMPRESA</button>
-          <button class="button_cadastro funcionario" onclick="cadastrar_funcionario()">CADASTRAR FUNCIONÁRIO</button>
+          <button class="button_cadastro empresa" onclick="cadastrar_empresa()"><span class="material-symbols-outlined">
+business_center
+</span>CADASTRAR EMPRESA</button>
+          <button class="button_cadastro funcionario" onclick="cadastrar_funcionario()"><span class="material-symbols-outlined">
+person
+</span>CADASTRAR FUNCIONÁRIO</button>
       </div>
       </div>
 
@@ -136,7 +144,7 @@
             </div>
           </form>
         </div>
-        <button class="button_cadastro" onclick="cadastrar()">ENVIAR</button>
+        <button class="button_cadastro" onclick="cadastrarEmpresa()">ENVIAR</button>
       </div>
       <div id="mensagem_erro"></div>
     </div>
@@ -169,7 +177,7 @@
               <input type="text" id="confirmacao_senha_input" placeholder="ficaadica06"/>
             </div>
           </form>
-        <button class="button_cadastro" onclick="cadastrar1()">ENVIAR</button>
+        <button class="button_cadastro" onclick="cadastrarFuncionario()">ENVIAR</button>
       </div>
       <div id="mensagem_erro"></div>
     </div>
@@ -224,15 +232,24 @@
   function cadastrar_empresa() {
     div_empresa.style.display = "flex"
     div_botão.style.display = "none"
+    span_voltar.style.display = "flex"
   }
 
   function cadastrar_funcionario() {
     div_funcionario.style.display = "flex"
     div_botão.style.display = "none"
+    span_voltar.style.display = "flex"
   }
 
+  function voltar() {
+    div_botão.style.display = "flex"
+    span_voltar.style.display = "none"
 
-  function cadastrar() {
+    div_empresa.style.display = "none"
+    div_funcionario.style.display = "none"
+  }
+
+  function cadastrarEmpresa() {
     // aguardar();
 
     //Recupere o valor da nova input pelo nome do id
@@ -275,9 +292,7 @@
       cnpjVar == "" ||
       nomeEmpresaVar == ""
     ) {
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
+       alert('Os campos não devem ser deixados em branco.')
      } 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -312,9 +327,8 @@
 
         if (resposta.ok) {
 
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
+          alert('Cadastro realizado com sucesso! Redirecionando para tela de Login...')
+        
           setTimeout(() => {
             window.location = "login.html";
           }, "2000");
@@ -329,7 +343,7 @@
 
     return false;
   }
-  function cadastrar1() {
+  function cadastrarFuncionario() {
     // aguardar();
 
     //Recupere o valor da nova input pelo nome do id
@@ -348,9 +362,7 @@
       confirmacaoSenhaVar == "" ||
       codigoVar == ""
     ) {
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
+       alert('Os campos não devem ser deixados em branco.')
      } 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar1", {
@@ -373,8 +385,7 @@
 
         if (resposta.ok) {
 
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+          alert('Cadastro realizado com sucesso! Redirecionando para tela de Login...')
 
           setTimeout(() => {
             window.location = "login.html";
