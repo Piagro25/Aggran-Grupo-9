@@ -10,7 +10,7 @@ function autenticar(email, senha) {
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
-function cadastrar(nome, email, senha, telefone, tamanhoTerreno, cidade, bairro, ufVar, complemento, cep, logradouro, tipoProducao, cnpj, nomeEmpresa, numero) {
+function cadastrarEmpresa(nome, email, senha, telefone, tamanhoTerreno, cidade, bairro, ufVar, complemento, cep, logradouro, tipoProducao, cnpj, nomeEmpresa, numero) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha, telefone, tamanhoTerreno, cidade, bairro, ufVar, complemento, cep, logradouro, tipoProducao, cnpj, nomeEmpresa, numero);
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
@@ -22,7 +22,7 @@ function cadastrar(nome, email, senha, telefone, tamanhoTerreno, cidade, bairro,
     return database.executar(instrucaoSql);
 }
 
-function cadastrar1(nome, email, senha, cpf) {
+function cadastrarFuncionario(nome, email, senha, cpf) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar1():", nome, email, senha, cpf);
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
@@ -36,6 +36,6 @@ function cadastrar1(nome, email, senha, cpf) {
 
 module.exports = {
     autenticar,
-    cadastrar,
-    cadastrar1
+    cadastrarEmpresa,
+    cadastrarFuncionario
 };

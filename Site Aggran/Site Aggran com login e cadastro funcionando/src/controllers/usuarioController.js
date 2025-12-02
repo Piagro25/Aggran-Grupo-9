@@ -1,5 +1,4 @@
 var usuarioModel = require("../models/usuarioModel");
-//var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -42,7 +41,7 @@ function autenticar(req, res) {
 
 }
 
-function cadastrar(req, res) {
+function cadastrarEmpresa(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
@@ -71,7 +70,7 @@ function cadastrar(req, res) {
     } else {    
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha, telefone, tamanhoTerreno, cidade, bairro, ufVar, complemento, cep, logradouro, tipoProducao, cnpj, nomeEmpresa, numero)
+        usuarioModel.cadastrarEmpresa(nome, email, senha, telefone, tamanhoTerreno, cidade, bairro, ufVar, complemento, cep, logradouro, tipoProducao, cnpj, nomeEmpresa, numero)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -88,7 +87,7 @@ function cadastrar(req, res) {
             );
     }
 }
-function cadastrar1(req, res) {
+function cadastrarFuncionario(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
@@ -106,7 +105,7 @@ function cadastrar1(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar1( nome, email, senha, cpf)
+        usuarioModel.cadastrarFuncionario( nome, email, senha, cpf)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -125,6 +124,6 @@ function cadastrar1(req, res) {
 }
 module.exports = {
     autenticar,
-    cadastrar,
-    cadastrar1
+    cadastrarEmpresa,
+    cadastrarFuncionario
 }
