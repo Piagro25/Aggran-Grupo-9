@@ -21,6 +21,6 @@ function buscarUltimosRegistros(req, res) {
 };
 
 module.exports = {
-    buscarUltimasMedidas
+    buscarUltimosRegistros
 
 }

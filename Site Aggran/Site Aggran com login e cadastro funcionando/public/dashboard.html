@@ -145,6 +145,13 @@
             scales: { y: { beginAtZero: true, max: 100 } },
          },
       });
+
+      var lista_sensores = "select * from sensor;"
+
+      for(var i = 1; i < lista_sensores.length; i++) {
+         `INSERT INTO REGISTROS VALUES
+         (${idRegistro}, ${umidade}, DEFAULT, ${fkidSensor})` 
+      }
       
 
 
