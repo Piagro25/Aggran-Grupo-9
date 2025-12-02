@@ -843,14 +843,6 @@ e se finaliza o login
    justify-content: flex-start;
    align-items: center;
    flex-direction: column;
-
-   /* flex: 1;              
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    padding: 20px; */
 }
 
 .Conteudo h1 {
@@ -869,9 +861,39 @@ e se finaliza o login
 
 .botões_tipo_cadastro {
    display: flex;
-   height: 300px;
+   height: 400px;
    flex-direction: row;
    gap: 20px;
+}
+
+.button_cadastro {
+   width: 200px;
+   height: 50px;
+   font-size: 14px;
+   font-family: Anton;
+   color: white;
+   background-color: #2e7d32;
+   border: #006838;
+   border-radius: 10px;
+   justify-self: center;
+   align-self: center;
+   text-align: center;
+   margin-bottom: 40px;
+   transition: all 0.5s;
+}
+
+.empresa {
+   width: 250px;
+   height: 350px;
+}
+
+.funcionario {
+   width: 300px;
+}
+
+.button_cadastro:hover {
+   cursor: pointer;
+   scale: 1.1;
 }
 
 .formulario {
@@ -925,27 +947,6 @@ e se finaliza o login
    display: flex;
    color: #006838;
    font-weight: bold;
-}
-
-.button_cadastro {
-   width: 200px;
-   height: 50px;
-   font-size: 14px;
-   font-family: Anton;
-   color: white;
-   background-color: #2e7d32;
-   border: #006838;
-   border-radius: 10px;
-   justify-self: center;
-   align-self: center;
-   text-align: center;
-   margin-bottom: 40px;
-   transition: all 0.5s;
-}
-
-.button_cadastro:hover {
-   cursor: pointer;
-   scale: 1.1;
 }
 
 /* 

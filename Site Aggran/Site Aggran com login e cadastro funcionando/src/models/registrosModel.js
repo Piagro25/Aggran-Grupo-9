@@ -16,8 +16,8 @@ SELECT
         ELSE 'Verde (Ideal)'
     END AS Status_Umidade
 FROM
-    registro r
-    LEFT JOIN sensor s
+    registro AS r
+    LEFT JOIN sensor AS s
     ON s.idSensor = r.fkidSensor
     JOIN usuarioSensor AS us
     ON us.fkidSensor = s.idSensor
