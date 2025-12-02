@@ -40,9 +40,9 @@ CREATE TABLE usuario (
     dataCadastro DATETIME DEFAULT current_timestamp,
     fk_cadastroEmpresa INT,
     fk_responsavel INT,
-    tipoUsuairo CHAR(8),
+    tipoUsuario CHAR(8),
     CONSTRAINT chkCliente CHECK (statusCliente IN ('Ativo', 'Inativo')),
-	CONSTRAINT chk_usuario CHECK (tipoUsuairo IN ('Administrador', 'Funcionário')),
+	CONSTRAINT chk_usuario CHECK (tipoUsuario IN ('Administrador', 'Funcionário')),
     CONSTRAINT fkcadastroUsuario FOREIGN KEY (fk_cadastroEmpresa) REFERENCES cadastroEmpresa(idCadastro),
     CONSTRAINT fkusuario_Responsavel FOREIGN KEY (fk_responsavel) REFERENCES usuario(idUsuario)
 );
@@ -95,7 +95,6 @@ CREATE TABLE usuarioSensor (
     CONSTRAINT fkSensorUsuarioSensor FOREIGN KEY (fkidSensor) REFERENCES sensor(idSensor)
 );
 
-
 INSERT INTO usuarioSensor (fkidUsuario, fkidSensor)
 VALUES
 (1, 1),
@@ -136,27 +135,32 @@ VALUES
 
 SELECT umidadeSolo FROM registro;
 
-
-CREATE VIEW vw_vizualizacao_risco AS 
-SELECT
-    --  ID de Hectare virtual
-    ROUND(r.fkidSensor / 4.0) AS Hectare_ID,
-    AVG(r.umidadeSolo) AS Umidade_Media,
-    -- classificação de Risco
-    CASE
-        -- vermelho: Umidade média menor que 20%
-        WHEN AVG(r.umidadeSolo) < 20.00 THEN 'Vermelho (Risco de Queimadas)'
-        -- amarelo: Umidade média entre 20% e 40%
-        WHEN AVG(r.umidadeSolo) >= 20.00 AND AVG(r.umidadeSolo) <= 40.00 THEN 'Amarelo (Atenção)'
-        -- verde: Umidade média maior que 40%
-        ELSE 'Verde (Ideal)'
-    END AS Status_Umidade
-FROM
-    registro r
-    LEFT JOIN sensor s
-    ON s.idSensor = r.fkidSensor
-GROUP BY
-    Hectare_ID
-ORDER BY
-    Hectare_ID;
-    
+CREATE VIEW vw_vizualizacao_riscos AS
+SELECT Subquery_Status.Status_Umidade,
+    COUNT(Subquery_Status.Hectare_ID) AS Total_Hectares,
+    Subquery_Status.idUsuario
+FROM (SELECT u.idUsuario,
+       c.nomeResponsavel AS 'Nome Responsável',
+       c.nomeEmpresa AS 'Nome Empresa',
+       c.cnpj AS 'CNPJ',
+       u.tipoUsuario AS 'Tipo de usuário',
+       ROUND(r.fkidSensor/ 4) AS Hectare_ID,
+       AVG(r.umidadeSolo) AS Umidade_media,
+       CASE
+           WHEN AVG(r.umidadeSolo) < 20.00 THEN 'Vermelho (Risco de Queimadas)'
+           WHEN AVG(r.umidadeSolo) >= 20.00 AND AVG(r.umidadeSolo) <= 40.00 THEN 'Amarelo (Atenção)'
+	   ELSE 'Verde (Ideal)'
+       END AS Status_Umidade
+       FROM registro r
+	   JOIN sensor s
+			ON s.idSensor = r.fkidSensor
+       JOIN cadastroEmpresa c
+			ON c.idCadastro = s.fkidCadastro
+       JOIN usuarioSensor us
+			ON s.idSensor = us.fkidSensor
+       JOIN usuario u
+			ON us.fkidUsuario = u.idUsuario
+       GROUP BY u.idUsuario, Hectare_ID, c.nomeResponsavel, c.nomeEmpresa, c.cnpj, u.tipoUsuario
+       ORDER BY Hectare_ID) AS Subquery_Status
+       GROUP BY Subquery_Status.Status_Umidade, Subquery_Status.idUsuario
+	   ORDER BY Total_Hectares DESC;
