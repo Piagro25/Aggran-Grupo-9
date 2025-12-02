@@ -888,7 +888,8 @@ e se finaliza o login
 }
 
 .funcionario {
-   width: 300px;
+   width: 250px;
+   height: 350px;
 }
 
 .button_cadastro:hover {
