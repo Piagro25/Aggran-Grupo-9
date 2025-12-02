@@ -1038,7 +1038,7 @@ e se finaliza o cadastro
 }
 
 .ola {
-   width: 300px;
+   width: 400px;
    margin: 10px;
    padding: 15px;
    justify-self: center;
@@ -1048,14 +1048,14 @@ e se finaliza o cadastro
    color: #ffffff;
    background-color: #006838;
    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-   font-size: 16px;
+   font-size: 24px;
 }
 
 /* kpi */
 
 .kpis {
    display: flex;
-   width: 90%;
+   width: 60%;
    justify-content: center;
    justify-self: center;
    flex-wrap:wrap;
@@ -1065,11 +1065,13 @@ e se finaliza o cadastro
    border-radius: 10px;
    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
    text-align: center;
-   font-size: 12px;
+
 }
 
+
 .kpi {
-   width: 190px;
+   width: 25%;
+   height: 120px;
    margin: 10px;
    padding: 10px;
    border-radius: 10px;
@@ -1078,28 +1080,28 @@ e se finaliza o cadastro
    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.kpi div {
-   display: flex;
-   flex-direction: column;
-   gap: 10px;
+.kpi h1 {
+   font-size: 16px;
+   font-weight: lighter;
+   font-family: anton;
 }
 
-.umidade-media {
-   background-color: rgb(230, 0, 0);
-   background-size: auto;
-   width: fit-content;
-   padding: 4px;
-   border-radius: 10px;
-   align-self: center;
+.kpi p {
+   font-size: 26px;
+   align-self: flex-end;
+   margin-top: 15px;
 }
 
-.risco-queimada {
-   background-color: rgb(230, 211, 0);
-   background-size: auto;
-   width: fit-content;
-   padding: 4px;
-   border-radius: 10px;
-   align-self: center;
+#H_abaixo {
+   background-color: rgba(255, 0, 0, 0.7);
+}
+
+#H_risco {
+   background-color: rgba(255, 255, 0, 0.7);
+}
+
+#H_estável {
+   background-color: rgba(3, 148, 3, 0.7);
 }
 
 /* gráficos */
@@ -1129,6 +1131,7 @@ e se finaliza o cadastro
 
 .botoes_dash {
    display: flex;
+   height: 100px;
    padding-top: 10px;
    flex-direction: row;
    justify-self: center;
@@ -1138,18 +1141,18 @@ e se finaliza o cadastro
 }
 
 .botoes_dash button {
-   width: 200px;
-   height: 50px;
-   font-size: 12px;
+   width: 40px;
+   height: 40px;
+   margin: 60px 0px;
+   font-size: 18px;
    font-family: Anton;
    color: white;
    background-color: #2e7d32;
    border: #006838;
-   border-radius: 10px;
+   border-radius: 5px;
    justify-self: center;
    align-self: center;
    text-align: center;
-   margin-bottom: 20px;
    transition: all 0.5s;
 }
 
@@ -1183,8 +1186,10 @@ e se finaliza o cadastro
    width: 100%;
 }
 
-.sidebar h1 {
-   font-family: Anton;
+.sidebar img {
+   justify-self: center;
+   align-self: center;
+   width: 150px;
 }
 
 .sidebar .navbar a {
@@ -1217,28 +1222,9 @@ e se finaliza o cadastro
     
 }
 
-.sidebar .navbar ul li p i.fa-groove.fa-chevron-up  {
-    opacity: 0;
-    
-}
-
 
 .sidebar .navbar ul li:hover {
     background-color: rgba(255, 255, 255, 0.1);  
-}
-
-.sidebar .navbar ul li:hover p i.fa-groove.fa-chevron-down {
-    opacity: 0;
-}
-
-.sidebar .navbar ul li:hover p i.fa-groove.fa-chevron-up {
-    opacity: 1;
-}
-
-.sidebar .navbar ul li a {
-
-    transition: all 0.3s;
-    
 }
 
 .sidebar .navbar ul li:hover a {

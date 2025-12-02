@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tecnologia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo_wrapper">
+        <a href="index.html"><img
+          class="logo"
+          width="105px"
+          height="40px"
+          src="./Assets/logo_header.png"
+          alt=""
+        /></a>
+        <a href="index.html"><img
+          class="logo"
+          width="21.27px"
+          height="39px"
+          src="./Assets/folha_header.png"
+          alt=""
+        /></a>
+      </div>
+      <ul class="navbar">
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li>
+          <a class="agora" href="tecnologia.html">Tecnologia</a>
+        </li>
+        <li>
+          <a href="contato.html">Fale Conosco</a>
+        </li>
+        <li>
+          <a href="cadastro.html">Primeiro Acesso</a>
+        </li>
+      </ul>
+      <button>
+        <a href="login.html">Área do Cliente</a>
+      </button>
+    </div>
+    
+    <div class="conteudo-tech">
+        <div class="title">
+            <h1>CONHEÇA NOSSA TECNOLOGIA IOT</h1>
+            <p>Um sensor de umidade do solo, simples, eficiente, para reduzir riscos de queimadas no cerrado.</p>
+        </div>
+
+        <div class="informativos">
+            <div class="info">
+                <img src="./Assets/detector.png" alt="">
+                <p>O sensor mede a umidade do solo em tempo real</p>
+            </div>
+            <div class="info">
+                <img src="./Assets/dash.png" alt="">
+                <p>Os dados são enviados para a sua dashboard</p>
+            </div>
+            <div class="info">
+                <img src="./Assets/queimada.png" alt="">
+                <p>Você pode antecipar condições críticas e evitar prejuízos</p>
+            </div>
+        </div>
+
+        <div class="title sub-title">
+            <h1>EXPERIMENTE NOSSO PROTÓTIPO</h1>
+            <p>Nosso sensor IoT foi prototipado e testado utilizando componentes acessíveis e confiáveis.</p>
+        </div>
+
+        <div class="tinkercad">
+          <img src="./Assets/arduino.png" alt="">
+          <div>
+            <button onclick="avisar()">ABRIR NO TINKERCAD</button>
+          </div>
+        </div>
+    </div>
+
+    <div class="components">
+      <div>
+         <i class="fa-solid fa-arrow-right"></i>
+        <p><b>Arduino Uno R3</b> - Placa microcontroladora que gerencia leitura dos dados</p>
+      </div>
+
+      <div>
+        <i class="fa-solid fa-arrow-right"></i>
+        <p><b>Sensor de umidade XPTO</b> - Responsável por medir a umidade do solo em tempo real</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer_wrapper">
+        <ul>
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="tecnologia.html">Tecnologia</a>
+          </li>
+          <li>
+            <a href="contato.html">Fale Conosco</a>
+          </li>
+          <li>
+            <a href="cadastro.html">Primeiro Acesso</a>
+          </li>
+          <li>
+            <a href="login.html">Área do Cliente</a>
+          </li>
+          <li>
+            <a href="">Política de Privacidade</a>
+          </li>
+          <li>
+            <a href="">Aviso Legal</a>
+          </li>
+        </ul>
+        <div class="footer_logo_wrapper">
+          <img
+            width="32px"
+            height="60px"
+            src="./Assets/folha_footer.png"
+            alt=""
+          />
+          <img
+            width="250px"
+            height="90px"
+            src="./Assets/logo_footer.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <p>&copy; 2025 AGGRAN. Todos os direitos reservados</p>
+    </div>
+</body>
+</html>
+<script>
+
+  function avisar() {
+    alert('Este modelo visual foi feito com I.A generativa para melhor compreensão, o software Tinkercad não possui o sensor de umidade de solo capacitivo.')
+  }
+  
+</script>
