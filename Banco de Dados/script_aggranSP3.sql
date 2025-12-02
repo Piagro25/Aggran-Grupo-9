@@ -135,3 +135,28 @@ VALUES
 (44.8, 3);
 
 SELECT umidadeSolo FROM registro;
+
+
+CREATE VIEW vw_vizualizacao_risco AS 
+SELECT
+    --  ID de Hectare virtual
+    ROUND(r.fkidSensor / 4.0) AS Hectare_ID,
+    AVG(r.umidadeSolo) AS Umidade_Media,
+    -- classificação de Risco
+    CASE
+        -- vermelho: Umidade média menor que 20%
+        WHEN AVG(r.umidadeSolo) < 20.00 THEN 'Vermelho (Risco de Queimadas)'
+        -- amarelo: Umidade média entre 20% e 40%
+        WHEN AVG(r.umidadeSolo) >= 20.00 AND AVG(r.umidadeSolo) <= 40.00 THEN 'Amarelo (Atenção)'
+        -- verde: Umidade média maior que 40%
+        ELSE 'Verde (Ideal)'
+    END AS Status_Umidade
+FROM
+    registro r
+    LEFT JOIN sensor s
+    ON s.idSensor = r.fkidSensor
+GROUP BY
+    Hectare_ID
+ORDER BY
+    Hectare_ID;
+    
