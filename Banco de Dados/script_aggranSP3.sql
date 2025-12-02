@@ -136,6 +136,8 @@ VALUES
 
 SELECT umidadeSolo FROM registro;
 
+
+CREATE VIEW vw_vizualizacao_risco AS 
 SELECT
     --  ID de Hectare virtual
     ROUND(r.fkidSensor / 4.0) AS Hectare_ID,
