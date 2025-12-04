@@ -29,6 +29,6 @@ void loop() {
  Serial.println(porcentagemUmidade);
 
 
-  delay(1500);
+  delay(2000);
 
 }

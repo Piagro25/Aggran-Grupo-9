@@ -64,23 +64,14 @@ const serial = async (
 
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
-            var lista_sensores = await poolBancoDados.execute(
-                "select * from sensor;",
-            ); 
-            var lista_formatada = lista_sensores[0];
+            var fkidSensor = Math.floor(Math.random() * 4) + 1; 
 
-                for(var i = 0; i < lista_formatada.length; i++) {
-                    var sensor_atual = lista_formatada[i]
+            await poolBancoDados.execute(
+                'INSERT INTO registro (umidadeSolo, fkidSensor) VALUES (?, ?)',
+                //[sensorAnalogico, sensorDigital]
+                [sensorDigital, fkidSensor]
+);                    
 
-                    var id_sensor = sensor_atual.idSensor
-                    await poolBancoDados.execute(
-                        
-                        'INSERT INTO registro (umidadeSolo, idSensor) VALUES (?)',
-                        //[sensorAnalogico, sensorDigital]
-                        [sensorDigital, id_sensor]
-                    );
-                    
-                }
             // este insert irá inserir os dados na tabela "medida"
             //console.log("valores inseridos no banco: ", sensorAnalogico + ", " + sensorDigital);
             console.log("valores inseridos no banco: ", sensorDigital);
