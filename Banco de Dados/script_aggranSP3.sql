@@ -137,19 +137,22 @@ SELECT umidadeSolo FROM registro;
 
 CREATE VIEW vw_vizualizacao_riscos AS
 SELECT Subquery_Status.Status_Umidade,
-    COUNT(Subquery_Status.Hectare_ID) AS Total_Hectares,
+    COUNT(Subquery_Status.quantidade_hectar) AS Total_Hectares,
     Subquery_Status.idUsuario
 FROM (SELECT u.idUsuario,
        c.nomeResponsavel AS 'Nome Responsável',
        c.nomeEmpresa AS 'Nome Empresa',
        c.cnpj AS 'CNPJ',
        u.tipoUsuario AS 'Tipo de usuário',
-       ROUND(r.fkidSensor/ 4) AS Hectare_ID,
+       SUM(r.fkidSensor) AS total_sensores,
+       (SUM(r.fkidSensor) / 4) AS quantidade_hectar,
        AVG(r.umidadeSolo) AS Umidade_media,
        CASE
-           WHEN AVG(r.umidadeSolo) < 20.00 THEN 'Vermelho (Risco de Queimadas)'
-           WHEN AVG(r.umidadeSolo) >= 20.00 AND AVG(r.umidadeSolo) <= 40.00 THEN 'Amarelo (Atenção)'
-	   ELSE 'Verde (Ideal)'
+           WHEN AVG(r.umidadeSolo) < 20.00 
+				THEN 'Vermelho (Risco de Queimadas)'
+           WHEN AVG(r.umidadeSolo) >= 20.00 AND AVG(r.umidadeSolo) <= 40.00 
+				THEN 'Amarelo (Atenção)'
+				ELSE 'Verde (Ideal)'
        END AS Status_Umidade
        FROM registro r
 	   JOIN sensor s
@@ -160,7 +163,7 @@ FROM (SELECT u.idUsuario,
 			ON s.idSensor = us.fkidSensor
        JOIN usuario u
 			ON us.fkidUsuario = u.idUsuario
-       GROUP BY u.idUsuario, Hectare_ID, c.nomeResponsavel, c.nomeEmpresa, c.cnpj, u.tipoUsuario
-       ORDER BY Hectare_ID) AS Subquery_Status
+       GROUP BY u.idUsuario, c.nomeResponsavel, c.nomeEmpresa, c.cnpj, u.tipoUsuario
+       ORDER BY quantidade_hectar) AS Subquery_Status
        GROUP BY Subquery_Status.Status_Umidade, Subquery_Status.idUsuario
 	   ORDER BY Total_Hectares DESC;
