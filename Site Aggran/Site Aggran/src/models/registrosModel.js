@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function buscarUltimosRegistros(ID_USUARIO) {
 
-    var instrucaoSql = `SELECT * FROM vw_visualizacao_riscos;`
+    var instrucaoSql = `SELECT * FROM vw_media_umidade;`
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

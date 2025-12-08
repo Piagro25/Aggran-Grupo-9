@@ -165,6 +165,8 @@ FROM (SELECT u.idUsuario,
        GROUP BY Subquery_Status.Status_Umidade, Subquery_Status.idUsuario
 	   ORDER BY Total_Hectares DESC;
        
+SELECT ROUND(AVG(umidadeSolo), 2) FROM registro;
+       
 SELECT * FROM vw_vizualizacao_riscos;
 
 SELECT umidadeSolo FROM registro;

@@ -26,7 +26,8 @@
             <ul>
                <li><a href=""><span></span>Manual de Instalação</a></li>
                <li><a href="https://suporte-aggran-1763843210902.atlassian.net/servicedesk/customer/portal/2"><span></span>Suporte - Jira</a></li>
-            </ul>
+               <li><a onclick="AbrirBob()"><span></span>BobIA</a></li>
+            </ul> 
          </div>
 
       </div>
@@ -39,15 +40,15 @@
          <div class="kpis" id="div_kpis">
             <div class="kpi" id="H_abaixo">
                   <h1>Hectares abaixo do ideal:</h1>
-                  <p id="p_KPI_Abaixo">2</p>
+                  <p id="p_KPI_Abaixo">3</p>
             </div>
             <div class="kpi" id="H_risco">
                   <h1>Hectares em risco/queda:</h1>
-                  <p id="p_KPI_Risco"></p>
+                  <p id="p_KPI_Risco">3</p>
             </div>
             <div class="kpi" id="H_estável">
                   <h1>Hectares estáveis:</h1>
-                  <p id="p_KPI_Acima"></p>
+                  <p id="p_KPI_Acima">4</p>
             </div>
          </div>
 
@@ -67,12 +68,12 @@
          </div>
 
          <div class="container_dash" id="grafico_h1" style="display: none">
-            <!-- Canvas específico para o gráfico de linha do sensor selecionado -->
+
             <canvas id="graficoHectar1"></canvas>
          </div>
 
          <div class="container_dash" id="grafico_sensor" style="display: none">
-            <!-- Canvas específico para o gráfico de linha do sensor selecionado -->
+           
             <canvas id="graficoLinhaSensor"></canvas>
          </div>
       </div>
@@ -81,66 +82,41 @@
 
    <script>
       var nomeUsuario = sessionStorage.NOME_USUARIO
+      var umidade_h1
       div_ola.innerHTML = `Olá, ${nomeUsuario}`
 
-      setInterval(ChecarKPI, 100)
-      
-      var KPI_Abaixo = 2;
-      var KPI_Risco = 3;
-      var KPI_Acima = 4;
-      var h1 = 'verde'
-
-      
-      function ChecarKPI() {
-         
-         p_KPI_Abaixo.innerHTML = `${KPI_Abaixo}`
-         p_KPI_Risco.innerHTML = `${KPI_Risco}`
-         p_KPI_Acima.innerHTML = `${KPI_Acima}`
-
-      if(h1 == 'verde') {
-         var KPI_AcimaAux = KPI_Acima + 1;
-         p_KPI_Acima.innerHTML = `${KPI_AcimaAux}`
-      } else if(h1 == 'amarelo'){
-         var KPI_RiscoAux = KPI_Risco + 1;
-         p_KPI_Risco.innerHTML = `${KPI_RiscoAux}`
-      }else {
-         var KPI_AbaixoAux = KPI_Abaixo + 1;
-         p_KPI_Abaixo.innerHTML = `${KPI_AbaixoAux}`
+      function AbrirBob() {
+         window.open("http://localhost:3334")
       }
+   
 
-      };
+      var intervaloGeracaoDados = null; 
+      var graficoLinhaSensor = null; 
+      var dadosAtuais = []; 
 
-
-
-      // --- LÓGICA PARA GRÁFICOS DE SENSORES INDIVIDUAIS (LINHA) ---
-
-      let intervaloGeracaoDados = null; // Variável para armazenar o ID do setInterval
-      let graficoLinhaSensor = null; // Variável para a instância do novo gráfico de linha
-      let dadosAtuais = []; // Array para armazenar os 10 últimos registros
-
-      // Função principal chamada pelos botões H2 a H10
+      
       function selecionarHectar(idHectar, min, max) {
-         // 1. Parar qualquer intervalo anterior
+         
          if (intervaloGeracaoDados !== null) {
             clearInterval(intervaloGeracaoDados);
             console.log(`Intervalo anterior (ID: ${intervaloGeracaoDados}) parado.`);
          }
 
-         // 2. Mudar a visualização para o gráfico do sensor
+         
          document.getElementById('grafico_sensor').style.display = 'block';
          document.getElementById('grafico_h1').style.display = 'none';
 
-         // 3. Destruir gráfico de linha anterior se existir, e criar um novo
+   
          if (graficoLinhaSensor !== null) {
             graficoLinhaSensor.destroy();
          }
 
-         dadosAtuais = []; // Limpa os dados para o novo sensor
+         dadosAtuais = [];
 
          graficoLinhaSensor = new Chart(document.getElementById("graficoLinhaSensor"), {
             type: "line",
             data: {
-               labels: [], // Rótulos de tempo/index
+               labels: [],
                datasets: [{
                   label: `Umidade Hectar ${idHectar}`,
                   data: dadosAtuais,
@@ -154,29 +130,33 @@
          });
 
 
-         // 4. Iniciar novo intervalo para o novo hectar selecionado
+         
          intervaloGeracaoDados = setInterval(() => {
             gerarEAtualizarDados(min, max);
-         }, 2000); // Gera um novo dado a cada 2 segundos
+         }, 2000); 
+
+         plotarGrafico()
+
+
          
          document.querySelectorAll('.button-hectar').forEach(btn => btn.classList.remove('active'));
          event.target.classList.add('active');
       }
 
-      // Função que gera um novo número e atualiza o gráfico
+      
       function gerarEAtualizarDados(min, max) {
-         const novoRegistro = Number(Math.random() * (max - min + 1) + min).toFixed(2);
+         var novoRegistro = Number(Math.random() * (max - min + 1) + min).toFixed(2);
          
-         // Mantém apenas os últimos 10 pontos de dados
+         
          if (dadosAtuais.length >= 10) {
-            dadosAtuais.shift(); // Remove o primeiro elemento do array de dados
-            graficoLinhaSensor.data.labels.shift(); // Remove o primeiro rótulo
+            dadosAtuais.shift();
+            graficoLinhaSensor.data.labels.shift();
          }
          
-         dadosAtuais.push(novoRegistro); // Adiciona novo dado
-         graficoLinhaSensor.data.labels.push(new Date().toLocaleTimeString()); // Adiciona rótulo de hora atual
+         dadosAtuais.push(novoRegistro); 
+         graficoLinhaSensor.data.labels.push(new Date().toLocaleTimeString()); 
 
-         // Atualiza o gráfico na tela
+         
          graficoLinhaSensor.update();
          console.log(`Dados Hectar: ${dadosAtuais}`);
       }
@@ -187,83 +167,127 @@ function buscarUltimosRegistros() {
          .then(resultado => resultado.json())
          .then(resultado => {
             console.log("Entrei listar")
-            console.log(resultado)
+            umidade_h1 = resultado[0].umidadeSolo
+            console.log(umidade_h1)
          })
 
          .catch(function (erro) {
             console.log('Erro frontend', erro);
          })
    }
-
+var dadosglobal;
 function listar() {
-      var idusuario = sessionStorage.ID_USUARIO
-      fetch(`/registros/listar`, { cache: "no-store" })
-         .then(response => response.json())
-         .then(function (response) {
+    var idusuario = sessionStorage.ID_USUARIO;
+    fetch(`/registros/listar`, { cache: "no-store" })
+        .then(response => response.json())
+        .then(function (response) {
             console.log("pedro", response);
 
-            plotarGrafico(response);
+            
+            lista_registro = []; 
+            for (var i = 0; i < response.length; i++) {
+                
+                lista_registro.push(parseFloat(response[i].umidadeSolo));
+            }
 
-         })
-         .catch(function (error) {
-            console.log(`Erro na obtenção dos dados p/ gráfico: ${error}`);
-         });
-      return false;
-   }
+            
+            plotarGrafico(lista_registro);
 
-function plotarGrafico(listaDados) {
-  
-   for (var i = 0; i < listaDados.length; i++) {
-      var dado_atual = listaDados[i]
-      var vida_atual = parseFloat(dado_atual.umidadeSolo) 
-      
-      lista_registro.push(vida_atual)
-
-   }
-   
-   console.log('Array de valores para plotagem:', lista_registro); 
-   
-   console.log('iniciando plotagem do gráfico...');
-   
-   let labels = [];
-   for (let i = 0; i < lista_registro.length; i++) {
-      labels.push(`${i + 1}`);
-   }
-
-   let dados = {
-      labels: labels,
-      datasets: [{
-         label: 'Umidade Hectar 1',
-         data: lista_registro,
-         borderColor: '#006838',
-         tension: 0.1
-      }]
-   };
-
-   const config = {
-      type: 'line',
-      data: dados,
-   };
+        })
+        .catch(function (error) {
+         
+        });
+    return false;
+}
 
 
-   let myChart = new Chart(
-      document.getElementById(`graficoHectar1`),
-      config
-   );
-   
-   console.log('----------------------------------------------')
-   console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+function plotarGrafico(listaDeUmidades) {
+
+    let labels = [];
+    
+    for (let i = 0; i < listaDeUmidades.length; i++) {
+        labels.push(`${i + 1}`);
+    }
+
+    let dados = {
+        labels: labels,
+        datasets: [{
+            label: 'Umidade Hectar 1',
+            data: listaDeUmidades, 
+            borderColor: '#006838',
+            fill: false,
+            tension: 0.1
+        }]
+    };
+
+    const config = {
+        type: 'line',
+        data: dados,
+        options: {
+            
+        }
+    };
+
+    
+    document.getElementById('grafico_h1').style.display = 'block';
+    
+    window.myChart = new Chart(
+        document.getElementById(`graficoHectar1`),
+        config
+    );
+
+    intervaloGraficoH1 = setInterval(() => {
+        AtualizarGrafico(window.myChart);
+    }, 2000); 
+}
+
+
+function AtualizarGrafico(g) {
+    var idusuario = sessionStorage.ID_USUARIO;
+    fetch(`/registros/listar`, { cache: "no-store" })
+        .then(response => response.json())
+        .then(function (response) {
+            
+            
+            var novoValor;
+            var novaLabel;
+
+            if (response.length > 0) {
+                const ultimoRegistro = response[response.length - 1]; 
+                novoValor = parseFloat(ultimoRegistro.umidadeSolo);
+                novaLabel = new Date().toLocaleTimeString(); 
+            } else {
+                 console.log("Nenhum registro recebido para atualizar.");
+                 return;
+            }
+
+            if (g.data.datasets[0].data.length >= 10) {
+                g.data.datasets[0].data.shift();
+                g.data.labels.shift();
+            }
+
+            g.data.datasets[0].data.push(novoValor);
+            g.data.labels.push(novaLabel);
+            g.update();
+
+        })
+        .catch(function (error) {
+            console.log(`Erro na obtenção dos dados p/ gráfico na atualização: ${error}`);
+        });
 }
 
 function HectarPrincipal() {
-   document.getElementById('grafico_sensor').style.display = 'none';
-   document.getElementById('grafico_h1').style.display = 'block';
-}
 
+document.getElementById('grafico_sensor').style.display = 'none';
+
+document.getElementById('grafico_h1').style.display = 'block';
+
+}
+HectarPrincipal();
 buscarUltimosRegistros();
 listar();
 
-      // 
+      
 
    </script>
 </html>
